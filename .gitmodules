@@ -1,0 +1,4 @@
+[submodule "submodules/ocb"]
+	path = submodules/ocb
+	url = https://github.com/OCA/OCB.git
+	branch = 16.0
