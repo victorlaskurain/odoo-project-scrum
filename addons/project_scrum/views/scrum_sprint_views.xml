@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+
+        <record id="view_scrum_sprint_filter" model="ir.ui.view">
+            <field name="name">scrum.sprint.select</field>
+            <field name="model">scrum.sprint</field>
+            <field name="arch" type="xml">
+                <search string="Search Sprint">
+                    <field name="name" string="Sprint"/>
+                    <field name="project_id" string="Project"/>
+                    <filter name="own_sprints" string="My Sprints" domain="[('scrum_master_user_id', '=', uid)]"/>
+                    <filter name="followed_by_me" string="Followed" domain="[('message_is_follower', '=', True)]"/>
+                    <separator/>
+                    <filter string="Open" name="open" domain="[('state', 'in', ['draft', 'in_progress'])]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Scrum Master" name="manager" context="{'group_by': 'scrum_master_user_id'}"/>
+                        <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sprint_kanban">
+            <field name="name">scrum.sprint.kanban</field>
+            <field name="model">scrum.sprint</field>
+            <field name="arch" type="xml">
+                <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors"
+                        sample="1"
+                        default_order="date_begin, date_end, name, id"
+                        >
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                                <div class="o_project_kanban_main ">
+                                    <div class="o_kanban_card_content mw-100">
+                                        <div class="o_kanban_primary_left">
+                                            <div class="o_primary">
+                                                Content <!-- :TODO: mostrar burndown chart -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="scrum_sprint_view_form">
+            <field name="name">scrum.sprint.form</field>
+            <field name="model">scrum.sprint</field>
+            <field name="arch" type="xml">
+                <form string="Sprint">
+                    <field name="active" invisible="1"/>
+                    <field name="developer_ids" invisible="1"/>
+                    <header>
+                    </header>
+                    <sheet string="Sprint">
+                        <div class="oe_button_box" name="button_box" groups="base.group_user">
+                            <button class="oe_stat_button"
+                                    name="action_show_tasks"
+                                    type="object" icon="fa-tasks"
+                                    groups="base.group_user">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="sprint_task_count" nolabel="1"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        Tasks
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon"
+                                title="Archived"
+                                bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+                        <div class="oe_title">
+                            <h1 class="d-flex flex-row">
+                                <field name="name"
+                                       class="o_text_overflow"
+                                       placeholder="e.g. Project X Sprint 001"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="project_id"/>
+                                <field name="scrum_master_user_id"/>
+                            </group>
+                            <group>
+                                <field name="date_begin"/>
+                                <field name="date_end"/>
+                                <field name="velocity_estimated"
+                                       string="Estimated velocity"
+                                       widget="percentage"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="tasks" string="Tasks">
+                                <div/>
+                                <field name="sprint_task_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence" widget="handle"/>  <!--:TODO: only editable by scrum master-->
+                                        <field name="task_id"/> <!--:TODO: only editable by scrum master-->
+                                        <field name="user_id"
+                                               domain="[('id', 'in', parent.developer_ids)]"/>
+                                        <field name="planned_hours" string="Estimation"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="developers" string="Developers">
+                                <div/>
+                                <field name="developer_dedication_ids">
+                                    <tree editable="bottom">
+                                        <field name="user_id"/>
+                                        <field name="dedication" widget="percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"
+                               options="{'post_refresh':True}"
+                               help="Follow this sprint to automatically track the events associated to tasks and issues of this sprint."
+                               groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="scrum_sprint_task_view_kanban" model="ir.ui.view">
+            <field name="name">scrum.sprint.task.kanban</field>
+            <field name="model">scrum.sprint.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="mode">primary</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <field name="user_ids" position="after">
+                    <field name="user_id"/>
+                </field>
+                <!-- on click edit linked task -->
+                <kanban position="attributes">
+                    <attribute name="action">action_edit_task</attribute>
+                    <attribute name="type">object</attribute>
+                    <attribute name="default_group_by">user_id</attribute>
+                    <attribute name="group_create">False</attribute>
+                </kanban>
+                <!-- disable share action -->
+                <a name="%(portal.portal_share_action)d" position="replace"/>
+                <!-- on edit edit linked task -->
+                <a type="edit" position="attributes">
+                    <attribute name="name">action_edit_task</attribute>
+                    <attribute name="type">object</attribute>
+                </a>
+                <!-- show current estimate -->
+                <div class="oe_kanban_bottom_left" position="inside">
+                    <div class="oe_kanban_bottom_left" position="inside">
+                        <div class="oe_kanban_align badge" title="Estimated hours to finalization">
+                            <field name="planned_hours"/>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+        <record id="scrum_sprint_action_all" model="ir.actions.act_window">
+            <field name="name">Sprints</field>
+            <field name="res_model">scrum.sprint</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_sprint_kanban"/>
+            <field name="search_view_id" ref="view_scrum_sprint_filter"/>
+            <field name="context">{'search_default_group_by_project': 1}</field>
+            <field name="target">main</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No sprints found. Let's create one!
+                </p>
+                <p>
+                    Create sprints to handle your tasks.
+                </p>
+            </field>
+        </record>
+
+        <record id="scrum_sprint_task_action_all" model="ir.actions.act_window">
+            <field name="name">Sprint Tasks</field>
+            <field name="res_model">scrum.sprint.task</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">kanban,tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No tasks found.
+                </p>
+                <p>
+                    Create a sprint and add tasks to it.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="project_scrum_menu"
+            groups="project.group_project_manager,project.group_project_user"
+            name="Scrum"
+            parent="project.menu_main_pm"
+            sequence="10"/>
+
+        <menuitem
+            action="scrum_sprint_action_all"
+            groups="project.group_project_manager,project.group_project_user"
+            id="scrum_sprint_menu_all"
+            name="Sprints"
+            parent="project_scrum.project_scrum_menu"
+            sequence="10"/>
+
+        <menuitem
+            action="scrum_sprint_task_action_all"
+            groups="project.group_project_manager,project.group_project_user"
+            id="scrum_sprint_task_menu_all"
+            name="Tasks"
+            parent="project_scrum.project_scrum_menu"
+            sequence="20"/>
+
+    </data>
+</odoo>
