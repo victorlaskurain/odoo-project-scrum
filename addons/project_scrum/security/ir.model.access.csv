@@ -10,3 +10,5 @@ access_scrum_sprint_developer_dedication_day_project_user,scrum.sprint.developer
 access_scrum_sprint_developer_dedication_project_user,scrum.sprint.developer.dedication by project user,model_scrum_sprint_developer_dedication,project.group_project_user,1,0,0,0
 access_scrum_sprint_task_project_user,scrum.sprint.task by project user,model_scrum_sprint_task,project.group_project_user,1,1,0,0
 access_scrum_sprint_project_user,scrum.sprint by project user,model_scrum_sprint,project.group_project_user,1,0,0,0
+access_project_task,project.task,model_task_estimation_update_wizard,project.group_project_user,1,1,1,1
+access_task_on_partner,project.task on partners,model_task_estimation_update_wizard,base.group_user,1,0,0,0

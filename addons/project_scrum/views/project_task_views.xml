@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_project_task_form">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <header position="inside">
+                    <button name="action_update_estimation"
+                            type="object"
+                            string="Update Estimation"
+                            />
+                </header>
+                <xpath expr="//field[@name='planned_hours']/parent::div" position="after">
+                    <field name="planned_hours_latest"
+                           class="oe_inline ms-2"
+                           widget="timesheet_uom_no_toggle"
+                           />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
