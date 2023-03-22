@@ -164,7 +164,9 @@
                 <div class="oe_kanban_bottom_left" position="inside">
                     <div class="oe_kanban_bottom_left" position="inside">
                         <div class="oe_kanban_align badge" title="Estimated hours to finalization">
-                            <field name="planned_hours"/>
+                            <a name="action_update_estimation" type="object">
+                                <field name="planned_hours_latest"/>
+                            </a>
                         </div>
                     </div>
                 </div>

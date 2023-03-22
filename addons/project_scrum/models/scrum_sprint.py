@@ -117,6 +117,9 @@ class SprintTask(models.Model):
             "view_mode": "form",
         }
 
+    def action_update_estimation(self):
+        return self.task_id.action_update_estimation()
+
 
 class Sprint(models.Model):
     _name = "scrum.sprint"
