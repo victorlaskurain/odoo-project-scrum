@@ -15,6 +15,7 @@ class Estimation(models.Model):
 
     user_id = fields.Many2one("res.users", help="User who made this estimation")
     task_id = fields.Many2one("project.task")
+    date = fields.Datetime("Date")
     mail_message_id = fields.Many2one("mail.message")
     planned_hours = fields.Float(required=True)
 
@@ -31,7 +32,8 @@ CREATE OR REPLACE VIEW %(table)s AS (
            mtv.create_uid      AS user_id,
            mtv.mail_message_id,
            mtv.new_value_float AS planned_hours,
-           mm.res_id           AS task_id
+           mm.res_id           AS task_id,
+           mm.date             AS date
     FROM       mail_tracking_value AS mtv
     INNER JOIN mail_message        AS mm
             ON mtv.mail_message_id = mm.id
@@ -81,3 +83,14 @@ class Task(models.Model):
             "type": "ir.actions.act_window",
             "target": "new",
         }
+
+    def _message_create(self, values_list):
+        # works together with task.estimation.update.wizard to log
+        # messages at any point in time. Used basically for testing.
+        res = super()._message_create(values_list)
+        values = self.env.cr.precommit.data.get(
+            "mail.tracking.message.values.project.task",
+            {}
+        )
+        res.write(values)
+        return res

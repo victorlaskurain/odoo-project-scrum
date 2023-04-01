@@ -1,30 +1,355 @@
 <odoo>
     <data>
-<!--
-          <record id="object0" model="project_scrum.project_scrum">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+        <record id="user_sprintdev01" model="res.users">
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[Command.link(ref('base.main_company'))]"/>
+            <field name="email">alice@example.com</field>
+            <field name="country_id" ref="base.es"/>
+            <field name="name">Alice (Scrum Project User and Master)</field>
+            <field name="login">alice</field>
+            <field name="password">alice</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user'), ref('project_scrum.group_scrum_master')])]"/>
+        </record>
 
-          <record id="object1" model="project_scrum.project_scrum">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <record id="user_sprintdev02" model="res.users">
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[Command.link(ref('base.main_company'))]"/>
+            <field name="email">bob@example.com</field>
+            <field name="country_id" ref="base.es"/>
+            <field name="name">Bob (Scrum Project User)</field>
+            <field name="login">bob</field>
+            <field name="password">bob</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+        </record>
 
-          <record id="object2" model="project_scrum.project_scrum">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <record id="user_sprintdev03" model="res.users">
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_ids" eval="[Command.link(ref('base.main_company'))]"/>
+            <field name="email">carl@example.com</field>
+            <field name="country_id" ref="base.es"/>
+            <field name="name">Carl (Scrum Project User)</field>
+            <field name="login">carl</field>
+            <field name="password">carl</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+        </record>
 
-          <record id="object3" model="project_scrum.project_scrum">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <record id="sprint01" model="scrum.sprint">
+            <field name="name">Sprint 01</field>
+            <field name="project_id" ref="project.project_project_2"/>
+            <field name="scrum_master_user_id" ref="user_sprintdev01"/>
+            <field name="date_begin"
+                   eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="date_end"
+                   eval="(datetime.now() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="sprint01_dedication_dev01" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="dedication" eval="0.3333"/>
+        </record>
+        <record id="sprint01_dedication_dev02" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev02"/>
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="dedication" eval="0.5"/>
+        </record>
 
-          <record id="object4" model="project_scrum.project_scrum">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <record id="task_01" model="project.task">
+            <field name="sequence">10</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_demo'))]"/>
+            <field name="planned_hours">50.0</field>
+            <field name="project_id" ref="project.project_project_1"/>
+            <field name="name">Scrum Proof of Concept for Office Design</field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(days=20)"/>
+        </record>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'Five hours less to go', 'planned_hours': 45}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'We can reduce the estimation as expected', 'planned_hours': 35}]"/>
+            <value eval="DateTime.now() - relativedelta(days=12)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'Unexpected problems slowed us down a bit.', 'planned_hours': 31}]"/>
+            <value eval="DateTime.now() - relativedelta(days=11)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'Nothing to report.', 'planned_hours': 20}]"/>
+            <value eval="DateTime.now() - relativedelta(days=9)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'Almost done.', 'planned_hours': 10}]"/>
+            <value eval="DateTime.now() - relativedelta(days=8)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.task_01'), 'message': 'Last bits took longer than expected.', 'planned_hours': 0}]"/>
+            <value eval="DateTime.now() - relativedelta(days=5)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('project_scrum.task_01')"/>
+        </function>
+
+        <record id="task_02" model="project.task">
+            <field name="sequence">20</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_demo', 'project_scrum.user_sprintdev01'))]"/>
+            <field name="planned_hours">75.0</field>
+            <field name="project_id" ref="project.project_project_2"/>
+            <field name="name">System setup  for R&amp;D</field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(days=16)"/>
+        </record>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'I looks as it will be easier than expected.', 'planned_hours': 65}]"/>
+            <value eval="DateTime.now() - relativedelta(days=10)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'Still looking good.', 'planned_hours': 50}]"/>
+            <value eval="DateTime.now() - relativedelta(days=9)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'Solid progress yesterday', 'planned_hours': 30}]"/>
+            <value eval="DateTime.now() - relativedelta(days=8)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'Some good steps forward', 'planned_hours': 20}]"/>
+            <value eval="DateTime.now() - relativedelta(days=7)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'Had to abandon the task for a couple of days but then found some shortcuts. Only last bits missing', 'planned_hours': 5}]"/>
+            <value eval="DateTime.now() - relativedelta(days=3)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('task_02'), 'message': 'Done!', 'planned_hours': 0}]"/>
+            <value eval="DateTime.now() - relativedelta(days=2)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value eval="ref('task_02')"/>
+        </function>
+
+        <record id="task_03" model="project.task">
+            <field name="sequence">30</field>
+            <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev01', 'project_scrum.user_sprintdev02'))]"/>
+            <field name="planned_hours">85.0</field>
+            <field name="project_id" ref="project.project_project_2"/>
+            <field name="name">UI Design for Office Design</field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(days=17)"/>
+        </record>
+
+        <record id="task_04" model="project.task">
+            <field name="sequence">30</field>
+            <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev02'))]"/>
+            <field name="planned_hours">85.0</field>
+            <field name="project_id" ref="project.project_project_2"/>
+            <field name="name">Testing for R&amp;D </field>
+            <field name="create_date" eval="DateTime.now() - relativedelta(days=18)"/>
+        </record>
+
+        <record id="sprint01_task_01" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="project.project_1_task_1"/>
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sequence" eval="110"/>
+        </record>
+        <function model="scrum.sprint.task" name="write">
+            <value model="scrum.sprint.task"
+                   eval="obj().env.ref('project_scrum.sprint01_task_01').filtered(lambda x: x.planned_hours_latest == 15.0).ids"/>
+            <value eval="{'planned_hours_latest': 10.0}"/>
+        </function>
+
+        <record id="sprint01_task_02" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="project.project_1_task_2"/>
+            <field name="user_id" ref="user_sprintdev02"/>
+            <field name="sequence" eval="120"/>
+        </record>
+        <record id="sprint01_task_03" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="project.project_3_task_1"/>
+            <field name="sequence" eval="130"/>
+        </record>
+        <record id="sprint01_task_04" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="task_01"/>
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sequence" eval="4"/>
+        </record>
+        <record id="sprint01_task_05" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="task_02"/>
+            <field name="user_id" ref="user_sprintdev02"/>
+            <field name="sequence" eval="5"/>
+        </record>
+        <record id="sprint01_task_06" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="task_03"/>
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sequence" eval="6"/>
+        </record>
+        <record id="sprint01_task_07" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint01"/>
+            <field name="task_id" ref="task_04"/>
+            <field name="sequence" eval="7"/>
+        </record>
+
+
+        <function model="scrum.sprint.task" name="write">
+            <value model="scrum.sprint.task"
+                   eval="obj().env.ref('project_scrum.sprint01_task_01').filtered(lambda x: x.planned_hours_latest == 15.0).ids"/>
+            <value eval="{'planned_hours_latest': 10.0}"/>
+        </function>
+        <function model="scrum.sprint.task" name="write">
+            <value model="scrum.sprint.task"
+                   eval="obj().env.ref('project_scrum.sprint01_task_01').filtered(lambda x: x.planned_hours_latest == 10.0).ids"/>
+            <value eval="{'planned_hours_latest': 5.0}"/>
+        </function>
+        <function model="mail.tracking.value" name="write">
+            <function model="mail.tracking.value"
+                      name="search"
+                      eval="[[('new_value_float', '=', 10.0), ('mail_message_id', 'in', obj().env.ref('project_scrum.sprint01_task_01').message_ids.ids)]]"/>
+
+            <value eval="{'write_date': '2000-01-01', 'create_date': '2010-01-01'}"/>
+        </function>
+
+        <record id="sprint02" model="scrum.sprint">
+            <field name="name">Sprint 02</field>
+            <field name="project_id" ref="project.project_project_2"/>
+            <field name="scrum_master_user_id" ref="user_sprintdev01"/>
+            <field name="date_begin"
+                   eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="date_end"
+                   eval="(datetime.now() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="sprint02_dedication_dev01" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sprint_id" ref="sprint02"/>
+            <field name="dedication" eval="0.3333"/>
+        </record>
+        <record id="sprint02_dedication_dev02" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev02"/>
+            <field name="sprint_id" ref="sprint02"/>
+            <field name="dedication" eval="0.5"/>
+        </record>
+        <record id="sprint02_task_01" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint02"/>
+            <field name="task_id" ref="project.project_2_task_1"/>
+            <field name="sequence" eval="1"/>
+        </record>
+        <record id="sprint02_task_02" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint02"/>
+            <field name="task_id" ref="project.project_2_task_2"/>
+            <field name="sequence" eval="2"/>
+        </record>
+
+        <record id="sprint03" model="scrum.sprint">
+            <field name="name">Sprint 03</field>
+            <field name="scrum_master_user_id" ref="user_sprintdev01"/>
+            <field name="date_begin"
+                   eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="date_end"
+                   eval="(datetime.now() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        </record>
+        <record id="sprint03_dedication_dev01" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev01"/>
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="dedication" eval="0.3333"/>
+        </record>
+        <record id="sprint03_dedication_dev03" model="scrum.sprint.developer.dedication">
+            <field name="user_id" ref="user_sprintdev03"/>
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="dedication" eval="1.0"/>
+        </record>
+
+
+
     </data>
 </odoo>
