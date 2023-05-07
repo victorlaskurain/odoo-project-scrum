@@ -1,7 +1,6 @@
 # Copyright 2023 Victor Laskurain
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import logging
 from odoo import models, fields, api, tools
 
 
@@ -16,8 +15,13 @@ class TaskEstimationUpdateWizard(models.TransientModel):
     message = fields.Html("Message")
     planned_hours = fields.Float(required=True)
 
-    def action_save(self):
+    def action_save(self, date=None):
         self.ensure_one()
+        if date != None:
+            values = self.env.cr.precommit.data.setdefault(
+                "mail.tracking.message.values.project.task", {}
+            )
+            values["date"] = date
         msg = self.message
         currenth = self.task_id.planned_hours_latest
         newh = self.planned_hours

@@ -151,6 +151,7 @@
                     <attribute name="action">action_edit_task</attribute>
                     <attribute name="type">object</attribute>
                     <attribute name="default_group_by">user_id</attribute>
+                    <attribute name="default_order">sequence, priority, id DESC</attribute>
                     <attribute name="group_create">False</attribute>
                 </kanban>
                 <!-- disable share action -->

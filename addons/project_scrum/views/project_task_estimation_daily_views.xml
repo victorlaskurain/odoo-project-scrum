@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+
+        <record id="project_task_estimation_daily_view_filter" model="ir.ui.view">
+            <field name="name">project.task.estimation.daily.view.filter</field>
+            <field name="model">project.task.estimation.daily</field>
+            <field name="arch" type="xml">
+                <search string="Search Daily Estimation">
+                    <field name="task_id" string="Task"/>
+                    <field name="date" string="Date"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Task" name="group_by_task" context="{'group_by': 'task_id'}"/>
+                        <filter string="Date" name="group_by_date" context="{'group_by': 'date:day'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="project_task_estimation_daily_view_tree"
+                model="ir.ui.view">
+            <field name="name">project.task.estimation.daily.view.tree</field>
+            <field name="model">project.task.estimation.daily</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Estimations" default_order="date DESC">
+                    <field name="task_id"/>
+                    <field name="date"/>
+                    <field name="planned_hours"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_task_estimation_daily_view_graph"
+                model="ir.ui.view">
+            <field name="name">project.task.estimation.daily.view.graph</field>
+            <field name="model">project.task.estimation.daily</field>
+            <field name="arch" type="xml">
+                <graph string="Daily Estimations" type="line">
+                    <field name="date"/>
+                    <field name="planned_hours" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="project_task_estimation_daily_all_action" model="ir.actions.act_window">
+            <field name="name">Daily Estimations</field>
+            <field name="res_model">project.task.estimation.daily</field>
+            <field name="domain">[]</field>
+            <field name="view_id" ref="project_task_estimation_daily_view_tree"/>
+            <field name="search_view_id" ref="project_task_estimation_daily_view_filter"/>
+            <field name="view_mode">tree,graph</field>
+            <field name="context">{'search_default_group_by_date': 1}</field>
+            <field name="target">main</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No estimations found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            action="project_task_estimation_daily_all_action"
+            groups="base.group_no_one"
+            id="project_task_estimation_daily_all_menu"
+            name="Daily Estimations"
+            parent="project_scrum.project_scrum_menu"
+            sequence="100"
+            />
+
+    </data>
+</odoo>

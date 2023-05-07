@@ -1,7 +1,7 @@
 # Copyright 2023 Victor Laskurain
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, tools, _
+from odoo import models, fields, api, _
 
 
 class Estimation(models.Model):
@@ -13,14 +13,15 @@ class Estimation(models.Model):
     _auto = False
     _log_access = True  # Include magic fields
 
-    user_id = fields.Many2one("res.users", help="User who made this estimation")
-    task_id = fields.Many2one("project.task")
-    date = fields.Datetime("Date")
-    mail_message_id = fields.Many2one("mail.message")
-    planned_hours = fields.Float(required=True)
+    user_id = fields.Many2one(
+        "res.users", readonly=True, help="User who made this estimation"
+    )
+    task_id = fields.Many2one("project.task", readonly=True)
+    date = fields.Datetime("Date", readonly=True)
+    mail_message_id = fields.Many2one("mail.message", readonly=True)
+    planned_hours = fields.Float(required=True, readonly=True)
 
     def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(
             """
 CREATE OR REPLACE VIEW %(table)s AS (
@@ -89,8 +90,7 @@ class Task(models.Model):
         # messages at any point in time. Used basically for testing.
         res = super()._message_create(values_list)
         values = self.env.cr.precommit.data.get(
-            "mail.tracking.message.values.project.task",
-            {}
+            "mail.tracking.message.values.project.task", {}
         )
         res.write(values)
         return res

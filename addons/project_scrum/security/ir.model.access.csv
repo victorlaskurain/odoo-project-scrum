@@ -2,6 +2,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_task_estimation_project_user,project.task.estimation by project user,model_project_task_estimation,project.group_project_user,1,1,1,1
 access_task_estimation_base_user,project.task.estimation by base user,model_project_task_estimation,base.group_user,1,0,0,0
 access_project_task_estimation_project_manager,project.task.estimation by project manager,model_project_task_estimation,project.group_project_manager,1,1,1,1
+access_project_task_estimation_daily_project_user,project.task.estimation by project_daily user,model_project_task_estimation_daily,project.group_project_user,1,0,0,0
 access_scrum_group_sprint_developer_dedication_day_scrum_master,scrum.sprint.developer.dedication.day by scrum master,model_scrum_sprint_developer_dedication_day,project_scrum.group_scrum_master,1,1,1,1
 access_scrum_group_sprint_developer_dedication_scrum_master,scrum.sprint.developer.dedication by scrum master,model_scrum_sprint_developer_dedication,project_scrum.group_scrum_master,1,1,1,1
 access_scrum_group_sprint_task_scrum_master,scrum.sprint.task by scrum master,model_scrum_sprint_task,project_scrum.group_scrum_master,1,1,1,1

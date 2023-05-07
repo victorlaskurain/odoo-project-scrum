@@ -42,6 +42,7 @@ class SprintDeveloperDedicationDay(models.Model):
         "Holds the dedication (% of her time) of any given developer in a "
         "specific day of this sprint."
     )
+    _auto = False
 
     sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
     user_id = fields.Many2one("res.users", required=True, index=True)
@@ -64,6 +65,7 @@ class SprintDeveloperDedicationDay(models.Model):
 
 class SprintTask(models.Model):
     _name = "scrum.sprint.task"
+    _order = "sequence, priority, id DESC"
     _inherits = {"project.task": "task_id"}
     _description = (
         "Sprint Task.\n"
@@ -232,3 +234,9 @@ WHERE NOT ss.active
             "domain": [("sprint_id", "=", self.id)],
             "view_mode": "kanban,tree",
         }
+
+
+class ScrumSprintBurndown(models.Model):
+    _name = "scrum.sprint.burndown"
+    _description = "Sprint Burndown Chart Data"
+    _auto = False
