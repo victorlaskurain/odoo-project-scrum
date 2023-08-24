@@ -13,7 +13,7 @@ x-logging:
 
 services:
   db:
-    image: docker.io/postgres:13
+    image: docker.io/postgres:15
     logging: *default-logging
     restart: "no"
     environment:
