@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="resource_daily_availability_view_search" model="ir.ui.view">
+        <field name="name">resource.daily.availability.view.search</field>
+        <field name="model">resource.daily.availability</field>
+        <field name="arch" type="xml">
+            <field name="date"/>
+            <search string="Search Sprint">
+                <group expand="0" string="Group By">
+                    <filter string="Calendar"
+                            name="group_by_calendar"
+                            context="{'group_by': 'calendar_id'}"/>
+                    <filter string="Last Month"
+                            name="last_month"
+                            domain="['&amp;', ('date', '&gt;=', datetime.datetime.now() - relativedelta(days=30)), ('date', '&lt;=', datetime.datetime.now())]"/>
+                    <filter string="Next Month"
+                            name="next_month"
+                            domain="[('date', '&lt;', datetime.datetime.now() + relativedelta(days=30)), ('date', '&gt;=', datetime.datetime.now())]"/>
+                    <separator/>
+                    <filter string="Global Attendance"
+                            name="global_attendance"
+                            domain="[('resource_id', '=', False)]"
+                            />
+                    <filter string="Resource Attendance"
+                            name="resource_attendance"
+                            domain="[('resource_id', '!=', False)]"
+                            />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="resource_daily_availability_view_tree"
+            model="ir.ui.view">
+        <field name="name">resource.daily.availability.view.tree</field>
+        <field name="model">resource.daily.availability</field>
+        <field name="arch" type="xml">
+            <tree string="Resource Daily Availability" default_order="calendar_id, date DESC">
+                <field name="calendar_id"/>
+                <field name="date"/>
+                <field name="resource_id"/>
+                <field name="attendance_range"/>
+                <field name="leave_range"/>
+                <field name="availability_range"/>
+                <field name="availability_hours"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="resource_daily_availability_all_action"
+            model="ir.actions.act_window">
+        <field name="name">Resource Daily Availability</field>
+        <field name="res_model">resource.daily.availability</field>
+        <field name="domain">[]</field>
+        <field name="view_id" ref="resource_daily_availability_view_tree"/>
+        <field name="search_view_id" ref="resource_daily_availability_view_search"/>
+        <field name="context">{'search_default_group_by_calendar': 1, 'search_default_last_month': 1, 'search_default_next_month': 1}</field>
+        <field name="view_mode">tree</field>
+        <field name="target">main</field>
+    </record>
+
+    <menuitem
+        action="resource_daily_availability_all_action"
+        id="resource_daily_availability_all_menu"
+        name="Daily Availability"
+        parent="resource.menu_resource_config"
+        sequence="10"
+        />
+
+</odoo>
