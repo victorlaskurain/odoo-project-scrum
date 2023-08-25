@@ -3,6 +3,7 @@
 
 from odoo import models, fields, api, _
 
+
 class EstimationDaily(models.Model):
     _name = "project.task.estimation.daily"
     _description = (
