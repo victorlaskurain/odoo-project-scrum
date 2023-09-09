@@ -39,22 +39,16 @@ class SprintDeveloperDedicationDay(models.Model):
     _name = "scrum.sprint.developer.dedication.day"
     _description = (
         "Developer's dedication to sprint (daily).\n"
-        "Holds the dedication (% of her time) of any given developer in a "
+        "Holds the dedication (number of hours) of any given developer in a "
         "specific day of this sprint."
     )
-    _auto = False
 
     sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
     user_id = fields.Many2one("res.users", required=True, index=True)
     date = fields.Date(required=True)
-    dedication = fields.Float(required=True, default=1.0)
+    dedication = fields.Float(required=True, default=0.0)
 
     _sql_constraints = [
-        (
-            "dedication_day_is_valid",
-            "CHECK(dedication >= 0 AND dedication <= 1)",
-            "Dedication must be between 0% and 100%",
-        ),
         (
             "scrum_sprint_developer_dedication_day_unique_sprint_id_user_id",
             "UNIQUE(sprint_id, user_id, date)",
@@ -143,12 +137,31 @@ class Sprint(models.Model):
     ]
 
     name = fields.Char(required=True)
-    project_id = fields.Many2one("project.project", required=False)
+    project_id = fields.Many2one(
+        "project.project", required=False, domain="[('company_id', '=', company_id)]"
+    )
+    company_id = fields.Many2one(
+        "res.company",
+        string="Company",
+        required=True,
+        default=lambda self: self.env.company,
+    )
     scrum_master_user_id = fields.Many2one(
-        "res.users", string="Scrum master", required=True
+        "res.users",
+        string="Scrum master",
+        required=True,
+        domain="[('company_id', '=', company_id)]",
     )
     developer_dedication_ids = fields.One2many(
         "scrum.sprint.developer.dedication", "sprint_id", string="Developer Dedication"
+    )
+    developer_dedication_day_ids = fields.One2many(
+        "scrum.sprint.developer.dedication.day",
+        "sprint_id",
+        compute="_compute_developer_dedication_day_ids",
+        compute_sudo=True,
+        string="Developer Dedication per Day",
+        store=True,
     )
     developer_ids = fields.Many2many(
         "res.users",
@@ -191,6 +204,45 @@ class Sprint(models.Model):
 
     def _search_developer_ids(self, operator, value):
         return [("developer_dedication_ids.user_id", operator, value)]
+
+    @api.depends(
+        "developer_dedication_ids",
+        "developer_dedication_ids.dedication",
+        "date_begin",
+        "date_end",
+    )
+    def _compute_developer_dedication_day_ids(self):
+        # just recompute all the data from scratch.
+        self.env.flush_all()
+        self.env.cr.execute(
+            """
+DELETE FROM scrum_sprint_developer_dedication_day
+WHERE sprint_id IN %(sprint_ids)s;
+
+INSERT INTO scrum_sprint_developer_dedication_day (sprint_id, user_id, date, dedication)
+    SELECT ss.id, ssdd.user_id, rda.date, rda.availability_hours * ssdd.dedication
+    FROM       scrum_sprint AS ss
+    INNER JOIN scrum_sprint_developer_dedication AS ssdd
+            ON ss.id = ssdd.sprint_id
+    INNER JOIN hr_employee AS hre
+            ON hre.user_id = ssdd.user_id
+               AND hre.company_id = ss.company_id
+    INNER JOIN resource_daily_availability AS rda
+            ON rda.resource_id = hre.resource_id
+               AND rda.date BETWEEN ss.date_begin AND ss.date_end
+    WHERE ss.id IN %(sprint_ids)s
+    -- this is redundant but helps the planner A LOT: the simple case
+    -- of a single sprint for a single developer and a month of sprint
+    -- duration time falls from 5s to 2ms!!!
+          AND rda.date BETWEEN %(date_begin)s AND %(date_end)s;
+""",
+            {
+                "sprint_ids": tuple(self.ids + [-1]),
+                "date_begin": min(self.mapped("date_begin")),
+                "date_end": max(self.mapped("date_end")),
+            },
+        )
+        self.env.invalidate_all()
 
     @api.depends("sprint_task_ids")
     def _compute_sprint_task_count(self):

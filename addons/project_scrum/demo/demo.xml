@@ -10,6 +10,10 @@
             <field name="password">alice</field>
             <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user'), ref('project_scrum.group_scrum_master')])]"/>
         </record>
+        <function model="res.users"
+                  name="action_create_employee">
+            <value eval="ref('project_scrum.user_sprintdev01')"/>
+        </function>
 
         <record id="user_sprintdev02" model="res.users">
             <field name="company_id" ref="base.main_company"/>
@@ -21,6 +25,10 @@
             <field name="password">bob</field>
             <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
         </record>
+        <function model="res.users"
+                  name="action_create_employee">
+            <value eval="ref('project_scrum.user_sprintdev02')"/>
+        </function>
 
         <record id="user_sprintdev03" model="res.users">
             <field name="company_id" ref="base.main_company"/>

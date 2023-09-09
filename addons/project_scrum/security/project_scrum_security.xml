@@ -3,7 +3,6 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 
 <odoo>
-    <data>
 
     <record id="group_scrum_master" model="res.groups">
         <field name="name">Scrum Master</field>
@@ -16,5 +15,10 @@
         <field name="implied_ids" eval="[(4, ref('project_scrum.group_scrum_master'))]"/>
     </record>
 
-    </data>
+    <record model="ir.rule" id="scrum_sprint_rule_company">
+        <field name="name">Sprint: multi-company</field>
+        <field name="model_id" ref="model_scrum_sprint"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
 </odoo>
