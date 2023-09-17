@@ -27,16 +27,15 @@ class SprintDeveloperDedication(models.Model):
             "Dedication must be between 0% and 100%",
         ),
         (
-            "scrum_sprint_developer_dedication_unique_sprint_id_user_id",
+            "unique_sprint_id_user_id",
             "UNIQUE(sprint_id, user_id)",
             "You can add a user to sprint only once.",
         ),
     ]
-    # :TODO: propagate to dedication.day. Also from sprint when dates change
 
 
-class SprintDeveloperDedicationDay(models.Model):
-    _name = "scrum.sprint.developer.dedication.day"
+class SprintDeveloperDedicationDaily(models.Model):
+    _name = "scrum.sprint.developer.dedication.daily"
     _description = (
         "Developer's dedication to sprint (daily).\n"
         "Holds the dedication (number of hours) of any given developer in a "
@@ -50,7 +49,7 @@ class SprintDeveloperDedicationDay(models.Model):
 
     _sql_constraints = [
         (
-            "scrum_sprint_developer_dedication_day_unique_sprint_id_user_id",
+            "unique_sprint_id_user_id",
             "UNIQUE(sprint_id, user_id, date)",
             "You can add a user to sprint day only once.",
         ),
@@ -79,7 +78,7 @@ class SprintTask(models.Model):
 
     _sql_constraints = [
         (
-            "scrum_sprint_task_unique_sprint_id_task_id",
+            "unique_sprint_id_task_id",
             "UNIQUE(sprint_id, task_id)",
             "You can add a task to sprint only once.",
         ),
@@ -155,10 +154,10 @@ class Sprint(models.Model):
     developer_dedication_ids = fields.One2many(
         "scrum.sprint.developer.dedication", "sprint_id", string="Developer Dedication"
     )
-    developer_dedication_day_ids = fields.One2many(
-        "scrum.sprint.developer.dedication.day",
+    developer_dedication_daily_ids = fields.One2many(
+        "scrum.sprint.developer.dedication.daily",
         "sprint_id",
-        compute="_compute_developer_dedication_day_ids",
+        compute="_compute_developer_dedication_daily_ids",
         compute_sudo=True,
         string="Developer Dedication per Day",
         store=True,
@@ -211,15 +210,15 @@ class Sprint(models.Model):
         "date_begin",
         "date_end",
     )
-    def _compute_developer_dedication_day_ids(self):
+    def _compute_developer_dedication_daily_ids(self):
         # just recompute all the data from scratch.
         self.env.flush_all()
         self.env.cr.execute(
             """
-DELETE FROM scrum_sprint_developer_dedication_day
+DELETE FROM scrum_sprint_developer_dedication_daily
 WHERE sprint_id IN %(sprint_ids)s;
 
-INSERT INTO scrum_sprint_developer_dedication_day (sprint_id, user_id, date, dedication)
+INSERT INTO scrum_sprint_developer_dedication_daily (sprint_id, user_id, date, dedication)
     SELECT ss.id, ssdd.user_id, rda.date, rda.availability_hours * ssdd.dedication
     FROM       scrum_sprint AS ss
     INNER JOIN scrum_sprint_developer_dedication AS ssdd
