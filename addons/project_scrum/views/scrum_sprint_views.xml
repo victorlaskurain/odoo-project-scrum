@@ -39,7 +39,28 @@
                                     <div class="o_kanban_card_content mw-100">
                                         <div class="o_kanban_primary_left">
                                             <div class="o_primary">
-                                                Content <!-- :TODO: mostrar burndown chart -->
+                                                <field name="name"/>
+                                                <field name="burndown_ids"
+                                                       style="width: 100%"
+                                                       widget="line_chart"
+                                                       options="{
+                                                           'chartOptions': {
+                                                               'legend': {
+                                                                   'display': False
+                                                               },
+                                                               'animation': False
+                                                           },
+                                                           'dataFields': ['date', 'planned_hours', 'available_hours'],
+                                                           'datasetOptions': {
+                                                               'planned_hours': {
+                                                                   'borderColor': 'red'
+                                                               },
+                                                               'available_hours': {
+                                                                   'borderColor':
+                                                                   'blue'
+                                                               }
+                                                           }
+                                                       }"/>
                                             </div>
                                         </div>
                                     </div>
@@ -102,6 +123,36 @@
                             </group>
                         </group>
                         <notebook>
+                            <page name="Burndown">
+                                <field name="burndown_ids"
+                                       style="width: 100%"
+                                       widget="line_chart"
+                                       options="{
+                                           'chartOptions': {
+                                               'legend': {
+                                                   'display': False
+                                               },
+                                               'animation': False
+                                           },
+                                           'dataFields': ['date', 'planned_hours', 'available_hours'],
+                                           'datasetOptions': {
+                                               'planned_hours': {
+                                                   'borderColor': 'red'
+                                               },
+                                               'available_hours': {
+                                                   'borderColor':
+                                                   'blue'
+                                               }
+                                           }
+                                       }"/>
+                                <field name="burndown_ids">
+                                    <tree>
+                                        <field name="date"/>
+                                        <field name="planned_hours"/>
+                                        <field name="available_hours"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page name="tasks" string="Tasks">
                                 <div/>
                                 <field name="sprint_task_ids">

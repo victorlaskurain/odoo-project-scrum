@@ -184,6 +184,7 @@ class Sprint(models.Model):
     )
     sprint_task_ids = fields.One2many("scrum.sprint.task", "sprint_id")
     sprint_task_count = fields.Integer(compute="_compute_sprint_task_count")
+    burndown_ids = fields.One2many("scrum.sprint.burndown", "sprint_id")
     velocity_estimated = fields.Float(required=True, default=1.0)
     state = fields.Selection(
         selection=[
