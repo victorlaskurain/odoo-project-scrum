@@ -318,7 +318,9 @@ CREATE VIEW scrum_sprint_burndown AS (
                 ON sst.task_id = pted.task_id
         GROUP BY sst.sprint_id, pted.date
     )
-    SELECT reference.sprint_id,
+    SELECT reference.sprint_id * 10000
+           + RANK() OVER (PARTITION BY reference.sprint_id ORDER BY reference.date) AS id,
+           reference.sprint_id,
            reference.date,
            estimation.hours AS planned_hours,
            SUM(reference.hours) OVER (

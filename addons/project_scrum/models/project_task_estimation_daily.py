@@ -82,7 +82,8 @@ CREATE VIEW %(table)s AS (
                ON ed.date = leod.date AND pt.id = leod.task_id
      )
     SELECT
-           EXTRACT(EPOCH FROM leed.date) * 100000 + leed.task_id AS id,
+           leed.task_id * 10000
+           + RANK() OVER (PARTITION BY leed.task_id ORDER BY leed.date) AS id,
            leed.task_id,
            leed.date,
            leed.planned_hours
