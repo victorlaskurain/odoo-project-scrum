@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="line_chart_widget.LineChartWidget" owl="1">
+        <div t-ref="root">
+            <div t-ref="container" class="h-100 position-relative">
+                <canvas t-ref="canvas" width="250" height="200"/>
+            </div>
+        </div>
+    </t>
+
+</templates>
