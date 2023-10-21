@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<templates xml:space="preserve">
+    <t t-name="project_scrum.Message" t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='messageView.message.date']" position="before">
+            <span t-if="messageView.message.task"> on task <a class="cursor-pointer" t-on-click="messageView.onClickTask"><i t-out="messageView.message.task.name"/></a> </span>
+            <t t-log="messageView"/>
+        </xpath>
+    </t>
+</templates>
