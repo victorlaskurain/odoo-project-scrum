@@ -112,6 +112,8 @@ CREATE VIEW resource_daily_attendance AS (
                        ELSE
                            TRUE
                    END
+               AND (rca.date_from IS NULL OR rca.date_from < ed.date)
+               AND (rca.date_to   IS NULL OR ed.date       < rca.date_to)
     WHERE rca.display_type IS NULL
     GROUP BY rc.id, ed.date
 );
