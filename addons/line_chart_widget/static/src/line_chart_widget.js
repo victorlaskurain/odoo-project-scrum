@@ -4,8 +4,7 @@ import { _lt } from "@web/core/l10n/translation";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { loadJS } from "@web/core/assets";
-
-const {
+import {
     Component,
     onWillStart,
     onWillRender,
@@ -16,7 +15,7 @@ const {
     onWillPatch,
     onWillUpdateProps,
     onPatched,
-} = owl;
+} from "@odoo/owl";
 
 export class LineChartField extends Component {
     setup() {
