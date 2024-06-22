@@ -16,6 +16,7 @@
         "views/scrum_sprint_views.xml",
         "views/project_task_views.xml",
         "views/project_task_estimation_daily_views.xml",
+        "views/project_views.xml",
         "wizard/task_estimation_update_wizard.xml",
     ],
     "assets": {

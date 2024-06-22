@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+        <record model="ir.ui.view" id="view_project_kanban">
+            <field name="name">project.scrum.project.kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <field name="display_name" position="before">
+                    <field name="sprint_count"/>
+                </field>
+                <xpath expr="//a[@name='action_view_tasks']/parent::div"
+                       position="before">
+                    <div role="menuitem">
+                        <a name="%(project_scrum.scrum_sprint_action_all_no_group)d"
+                           type="action"
+                           context="{'search_default_project_id': id}"
+                           >Sprints</a>
+                    </div>
+                </xpath>
+                <xpath expr="//a[hasclass('o_project_kanban_box') and @name='action_view_tasks']"
+                       position="before">
+                    <a name="%(project_scrum.scrum_sprint_action_all_no_group)d"
+                       type="action"
+                       context="{'search_default_project_id': id}"
+                       class="o_project_kanban_box">
+                        <div t-if="record.sprint_count.value > 0">
+                            <span class="o_value"><t t-esc="record.sprint_count.value"/></span>
+                            <span class="o_label ms-1">Sprints</span>
+                        </div>
+                    </a>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
