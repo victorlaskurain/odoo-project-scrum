@@ -16,6 +16,9 @@
                     <separator/>
                     <filter string="Open" name="open" domain="[('state', 'in', ['draft', 'in_progress'])]"/>
                     <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Active"   name="active" domain="[('active', '=', True)]"/>
+                    <separator/>
                     <group expand="0" string="Group By">
                         <filter string="Scrum Master" name="manager" context="{'group_by': 'scrum_master_user_id'}"/>
                         <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
