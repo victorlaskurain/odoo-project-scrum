@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 from .res_config_settings import EARLIEST_DATE_DEFAULT, LATEST_DATE_DEFAULT
 
@@ -176,3 +177,63 @@ CREATE VIEW resource_daily_availability AS (
 """,
             globals(),
         )
+
+
+class ResourceCalendarDaily(models.Model):
+    _name = "resource.daily.calendar"
+    _description = (
+        "Basic implementation of resource.daily API over resource.daily.availabilit"
+    )
+    _auto = False
+    _log_access = False
+
+    calendar_id = fields.Many2one("resource.calendar", readonly=True)
+    name = fields.Char("Name", related="calendar_id.name")
+    active = fields.Boolean("Active", related="calendar_id.active")
+    company_id = fields.Many2one(
+        "res.company", "Company", related="calendar_id.company_id"
+    )
+
+    def init(self):
+        self.env.cr.execute(
+            """
+DROP VIEW IF EXISTS resource_daily_calendar;
+CREATE VIEW resource_daily_calendar AS (
+    SELECT id AS id,
+           id AS calendar_id
+    FROM resource_calendar
+);
+"""
+        )
+
+    def get_work_duration_data(
+        self, from_datetime, to_datetime, compute_leaves=True, domain=None
+    ):
+        if compute_leaves == False:
+            raise UserError(_("Computing work duration ignoring dates not supported!"))
+        if domain != None:
+            raise UserError(_("Computing work duration with domain not supported!"))
+        calendar_id = self.calendar_id.id
+        self.env.cr.execute(
+            """
+SELECT CAST(COUNT(*) AS FLOAT)                                   AS day_count,
+       COALESCE(SUM(availability_hours) / MAX(hours_per_day), 0) AS days,
+       COALESCE(SUM(availability_hours), 0)                      AS hours
+FROM       resource_daily_availability
+INNER JOIN resource_calendar
+        ON resource_calendar.id = resource_daily_availability.calendar_id
+WHERE date >= %(from_datetime)s
+  AND date < %(to_datetime)s
+  AND resource_id IS NULL
+  AND calendar_id = %(calendar_id)s
+  AND availability_hours > 0
+""",
+            locals(),
+        )
+        day_count, days, hours = self.env.cr.fetchone()
+        return {"days": days, "hours": hours}
+
+    def get_work_hours_count(self, start_dt, end_dt, compute_leaves=True, domain=None):
+        return self.get_work_duration_data(start_dt, end_dt, compute_leaves, domain)[
+            "hours"
+        ]

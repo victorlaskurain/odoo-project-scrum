@@ -7,8 +7,8 @@
         <field name="name">resource.daily.availability.view.search</field>
         <field name="model">resource.daily.availability</field>
         <field name="arch" type="xml">
-            <field name="date"/>
             <search string="Search Sprint">
+                <field name="date"/>
                 <group expand="0" string="Group By">
                     <filter string="Calendar"
                             name="group_by_calendar"
@@ -33,8 +33,7 @@
         </field>
     </record>
 
-    <record id="resource_daily_availability_view_tree"
-            model="ir.ui.view">
+    <record id="resource_daily_availability_view_tree" model="ir.ui.view">
         <field name="name">resource.daily.availability.view.tree</field>
         <field name="model">resource.daily.availability</field>
         <field name="arch" type="xml">
