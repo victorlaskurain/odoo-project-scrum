@@ -169,7 +169,7 @@ CREATE VIEW resource_daily_availability AS (
     ) AS rr
             ON rr.calendar_id = rda.calendar_id OR rr.id IS NULL
     LEFT  JOIN resource_calendar_leaves AS grcl
-            ON grcl.calendar_id = rda.calendar_id
+            ON     (grcl.calendar_id IS NULL OR grcl.calendar_id = rda.calendar_id)
                AND (grcl.resource_id IS NULL OR grcl.resource_id = rr.id)
                AND rda.date BETWEEN grcl.date_from::date AND grcl.date_to::date
     GROUP BY rda.id, rda.date, rda.calendar_id, rr.id
