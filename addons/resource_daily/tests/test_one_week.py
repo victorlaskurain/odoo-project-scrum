@@ -8,7 +8,7 @@ from odoo.tests import tagged, TransactionCase
 
 @tagged("post_install", "-at_install")
 class TestOneWeek(TransactionCase):
-    def compare_to_baseline(self):
+    def compare_to_baseline(self, compute_leaves):
         DailyCalendar = self.env["resource.daily.calendar"]
         calendars = self.env["resource.calendar"].search([])
         ranges = [
@@ -21,8 +21,10 @@ class TestOneWeek(TransactionCase):
             daily_calendar = DailyCalendar.search([("calendar_id", "=", calendar.id)])
             self.assertTrue(daily_calendar.exists())
             for begin, end in ranges:
-                baseline = calendar.get_work_duration_data(begin, end)
-                value = daily_calendar.get_work_duration_data(begin, end)
+                baseline = calendar.get_work_duration_data(begin, end, compute_leaves)
+                value = daily_calendar.get_work_duration_data(
+                    begin, end, compute_leaves
+                )
                 # turn 189.99999999999991 hours into 190.00,
                 # 259.94/259.92 days into 259.9, etc.
                 baseline["hours"] = round(baseline["hours"], 2)
@@ -37,7 +39,8 @@ class TestOneWeek(TransactionCase):
                 self.assertEqual(baseline, value, msg)
 
     def test_no_leaves(self):
-        self.compare_to_baseline()
+        self.compare_to_baseline(True)
+        self.compare_to_baseline(False)
 
     def test_leaves(self):
         Leave = self.env["resource.calendar.leaves"]
@@ -62,7 +65,8 @@ class TestOneWeek(TransactionCase):
                 "date_to": datetime(2024, 12, 26),
             }
         )
-        self.compare_to_baseline()
+        self.compare_to_baseline(True)
+        self.compare_to_baseline(False)
 
     def test_leaves_single_calendar(self):
         std_calendar = self.env.ref("resource.resource_calendar_std")
@@ -91,4 +95,5 @@ class TestOneWeek(TransactionCase):
                 "calendar_id": std_calendar.id,
             }
         )
-        self.compare_to_baseline()
+        self.compare_to_baseline(True)
+        self.compare_to_baseline(False)

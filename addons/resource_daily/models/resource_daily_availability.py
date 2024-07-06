@@ -154,6 +154,11 @@ CREATE VIEW resource_daily_availability AS (
            EXTRACT(EPOCH FROM
                RESOURCE_DAILY_TSMULTIRANGE_TOTAL(
                    RANGE_AGG(rda.attendance_range)
+               )
+           ) / 60.0 / 60.0 AS attendance_hours,
+           EXTRACT(EPOCH FROM
+               RESOURCE_DAILY_TSMULTIRANGE_TOTAL(
+                   RANGE_AGG(rda.attendance_range)
                    - RANGE_AGG(
                        RESOURCE_DAILY_TSRANGE(grcl.date_from, grcl.date_to)
                    )
@@ -209,16 +214,15 @@ CREATE VIEW resource_daily_calendar AS (
     def get_work_duration_data(
         self, from_datetime, to_datetime, compute_leaves=True, domain=None
     ):
-        if compute_leaves == False:
-            raise UserError(_("Computing work duration ignoring dates not supported!"))
         if domain != None:
             raise UserError(_("Computing work duration with domain not supported!"))
+        hours_column = "availability" if compute_leaves else "attendance"
         calendar_id = self.calendar_id.id
         self.env.cr.execute(
             """
-SELECT CAST(COUNT(*) AS FLOAT)                                   AS day_count,
-       COALESCE(SUM(availability_hours) / MAX(hours_per_day), 0) AS days,
-       COALESCE(SUM(availability_hours), 0)                      AS hours
+SELECT CAST(COUNT(*) AS FLOAT)                                     AS day_count,
+       COALESCE(SUM({hours_column}_hours) / MAX(hours_per_day), 0) AS days,
+       COALESCE(SUM({hours_column}_hours), 0)                      AS hours
 FROM       resource_daily_availability
 INNER JOIN resource_calendar
         ON resource_calendar.id = resource_daily_availability.calendar_id
@@ -226,8 +230,10 @@ WHERE date >= %(from_datetime)s
   AND date < %(to_datetime)s
   AND resource_id IS NULL
   AND calendar_id = %(calendar_id)s
-  AND availability_hours > 0
-""",
+  AND {hours_column}_hours > 0
+""".format(
+                hours_column=hours_column
+            ),
             locals(),
         )
         day_count, days, hours = self.env.cr.fetchone()
