@@ -187,7 +187,7 @@ CREATE VIEW resource_daily_availability AS (
 class ResourceCalendarDaily(models.Model):
     _name = "resource.daily.calendar"
     _description = (
-        "Basic implementation of resource.daily API over resource.daily.availabilit"
+        "Basic implementation of resource.daily API over resource.daily.availability"
     )
     _auto = False
     _log_access = False

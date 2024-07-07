@@ -1,0 +1,194 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* resource_daily
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-07 18:25+0000\n"
+"PO-Revision-Date: 2024-07-07 20:43+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms:\n"
+"Language: es\n"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__attendance_range
+msgid "Attendance Ranges"
+msgstr "Rangos de presencia"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__availability_hours
+msgid "Availability Hours"
+msgstr "Horas disponibles"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__availability_range
+msgid "Availability Ranges"
+msgstr "Rangos de disponibilidad"
+
+#. module: resource_daily
+#: model:ir.model,name:resource_daily.model_resource_daily_calendar
+msgid ""
+"Basic implementation of resource.daily API over resource.daily.availability"
+msgstr "Implementación básica del API de resource.daily sobre resource.daily.availability"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__calendar_id
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__calendar_id
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Calendar"
+msgstr "Calendario"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: resource_daily
+#. odoo-python
+#: code:addons/resource_daily/models/resource_daily_availability.py:0
+#, python-format
+msgid "Computing work duration with domain not supported!"
+msgstr "¡Calcular la duración del trabajo usando dominios no está soportado!"
+
+#. module: resource_daily
+#: model:ir.model,name:resource_daily.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes"
+
+#. module: resource_daily
+#: model:ir.ui.menu,name:resource_daily.resource_daily_availability_all_menu
+msgid "Daily Availability"
+msgstr "Disponibilidad diaria"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__display_name
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__display_name
+msgid "Display Name"
+msgstr "Nombre visible"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_res_config_settings__earliest_date
+msgid "Earliest Date"
+msgstr "Fecha más temprana"
+
+#. module: resource_daily
+#: model:ir.model.fields,help:resource_daily.field_res_config_settings__earliest_date
+msgid "Earliest date for resource availability computations"
+msgstr "Fecha más temprana para los cálculos de disponibilidad"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Global Attendance"
+msgstr "Asistencia global"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Group By"
+msgstr "Agrupor por"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__id
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__id
+msgid "ID"
+msgstr "ID"
+
+#. module: resource_daily
+#: model:ir.model.fields,help:resource_daily.field_resource_daily_calendar__active
+msgid ""
+"If the active field is set to false, it will allow you to hide the Working "
+"Time without removing it."
+msgstr "Desactivar el campo \"activo\" te permite ocultar los registros sin tener que eliminarlos."
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability____last_update
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar____last_update
+msgid "Last Modified on"
+msgstr "Fecha de última modificación"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Last Month"
+msgstr "Mes pasado"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_res_config_settings__latest_date
+msgid "Latest Date"
+msgstr "Fecha más tardía"
+
+#. module: resource_daily
+#: model:ir.model.fields,help:resource_daily.field_res_config_settings__latest_date
+msgid "Latest date for resource availability computations"
+msgstr "Fecha más tardía para los cálculos de disponibilidad"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__leave_range
+msgid "Leave Ranges"
+msgstr "Rangos de ausencias"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_calendar__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Next Month"
+msgstr "Mes que viene"
+
+#. module: resource_daily
+#: model:ir.model.fields,field_description:resource_daily.field_resource_daily_availability__resource_id
+msgid "Resource"
+msgstr "Recurso"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Resource Attendance"
+msgstr "Asistencia"
+
+#. module: resource_daily
+#: model:ir.actions.act_window,name:resource_daily.resource_daily_availability_all_action
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_tree
+msgid "Resource Daily Availability"
+msgstr "Disponibilidad diaria"
+
+#. module: resource_daily
+#: model:ir.model,name:resource_daily.model_resource_daily_availability
+msgid "Resource availability expanded to every day."
+msgstr "Disponibilidad diaria expandida para cada día."
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.res_config_settings_view_form
+msgid "Resources Daily"
+msgstr "Recursos por día"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.resource_daily_availability_view_search
+msgid "Search Sprint"
+msgstr "Buscar por sprint"
+
+#. module: resource_daily
+#: model_terms:ir.ui.view,arch_db:resource_daily.res_config_settings_view_form
+msgid ""
+"Specify the earliest and latest dates available for the attendance SQL views"
+msgstr "Indique las fechas más temprana y más tardía para las que se soportarán las vistas SQL de asistencia"
+
+#. module: resource_daily
+#: model:ir.model,name:resource_daily.model_ir_config_parameter
+msgid "System Parameter"
+msgstr "Parámetro del sistema"
