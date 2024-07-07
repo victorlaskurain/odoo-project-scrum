@@ -18,5 +18,7 @@ that you can compute any resource's usage at the SQL level.""",
         "views/res_config_settings_views.xml",
     ],
     # only loaded in demonstration mode
-    "demo": [],
+    "demo": [
+        "demo/resource_calendar_demo.xml",
+    ],
 }
