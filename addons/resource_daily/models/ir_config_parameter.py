@@ -16,5 +16,5 @@ class IrConfigParameter(models.Model):
         res = super().set_param(key, value)
         if key in ("resource_daily.earliest_date", "resource_daily.latest_date"):
             self.env.flush_all()  # without this the REFRESH might not see the change.
-            self.env.cr.execute("REFRESH MATERIALIZED VIEW rda_every_day;")
+            self.env.cr.execute("REFRESH MATERIALIZED VIEW resource_daily_every_day;")
         return res
