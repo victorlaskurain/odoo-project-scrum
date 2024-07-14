@@ -1,5 +1,5 @@
 {
-    "name": "project_scrum",
+    "name": "Project Scrum",
     "summary": """Scrum sprint management.""",
     "description": """Scrum sprint management.""",
     "author": "Victor Laskurain",
@@ -8,7 +8,14 @@
     "category": "Services/Project",
     "version": "16.0.1.0.0",
     # any module necessary for this one to work correctly
-    "depends": ["base", "project", "hr_timesheet", "line_chart_widget", "mail"],
+    "depends": [
+        "base",
+        "project",
+        "hr_timesheet",
+        "line_chart_widget",
+        "mail",
+        "resource_daily",
+    ],
     # always loaded
     "data": [
         "security/project_scrum_security.xml",

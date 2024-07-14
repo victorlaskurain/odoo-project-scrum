@@ -306,18 +306,18 @@ DROP VIEW IF EXISTS scrum_sprint_burndown;
 CREATE VIEW scrum_sprint_burndown AS (
     WITH sprint_reference AS (
         SELECT sprint_id,
-               date,
+               date::date,
                SUM(dedication) AS hours
         FROM scrum_sprint_developer_dedication_daily
-        GROUP BY sprint_id, date
+        GROUP BY sprint_id, date::date
     ), sprint_estimation AS (
         SELECT sprint_id,
-               date,
+               date::date,
                SUM(planned_hours) AS hours
         FROM       scrum_sprint_task AS sst
-        INNER JOIN project_task_estimation_daily AS pted
+        INNER JOIN project_task_estimation AS pted
                 ON sst.task_id = pted.task_id
-        GROUP BY sst.sprint_id, pted.date
+        GROUP BY sst.sprint_id, pted.date::date
     )
     SELECT reference.sprint_id * 10000
            + RANK() OVER (PARTITION BY reference.sprint_id ORDER BY reference.date) AS id,
