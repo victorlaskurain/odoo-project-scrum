@@ -94,3 +94,9 @@ class Task(models.Model):
         )
         res.write(values)
         return res
+
+    def _track_finalize_as(self, user_id):
+        """Generate tracking message impersonating user_id
+
+        The sole purpose of this method is creating demo records linked to the desired user."""
+        return super().with_user(user_id)._track_finalize()
