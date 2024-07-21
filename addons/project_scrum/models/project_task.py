@@ -73,6 +73,7 @@ class Task(models.Model):
             {
                 "task_id": self.id,
                 "planned_hours": self.planned_hours_latest,
+                "stage_id": self.project_id.stage_id.id if self.env.user.has_group('project.group_project_stages') else False,
             }
         )
         return {
