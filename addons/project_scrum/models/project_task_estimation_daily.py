@@ -1,7 +1,7 @@
 # Copyright 2023 Victor Laskurain
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
+from odoo import models, fields
 
 
 class EstimationDaily(models.Model):
@@ -24,7 +24,7 @@ class EstimationDaily(models.Model):
         # drops the function, aggregate and the view because of "CASCADE"
         self.env.cr.execute(
             """
-DROP FUNCTION IF EXISTS COALESCE_AGG_sfunc(state ANYELEMENT, value ANYELEMENT) CASCADE
+DROP FUNCTION IF EXISTS COALESCE_AGG_sfunc(state ANYELEMENT, value ANYELEMENT) CASCADE;
 """
         )
         self.env.cr.execute(
@@ -40,7 +40,7 @@ $$ LANGUAGE SQL;
 CREATE AGGREGATE COALESCE_AGG(ANYELEMENT) (
     SFUNC = COALESCE_AGG_SFUNC,
     STYPE  = ANYELEMENT
-)
+);
 """
         )
         self.env.cr.execute(
@@ -88,7 +88,7 @@ CREATE VIEW %(table)s AS (
            leed.date,
            leed.planned_hours
     FROM last_estimation_every_date AS leed
-)
+);
 """
             % {"table": self._table}
         )

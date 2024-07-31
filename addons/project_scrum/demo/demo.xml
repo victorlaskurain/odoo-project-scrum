@@ -732,7 +732,7 @@
             <field name="date_begin"
                    eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
             <field name="date_end"
-                   eval="(datetime.now() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+                   eval="datetime.now().strftime('%Y-%m-%d')"/>
         </record>
         <record id="sprint03_dedication_dev01" model="scrum.sprint.developer.dedication">
             <field name="user_id" ref="user_sprintdev_alice"/>
@@ -745,6 +745,12 @@
             <field name="dedication" eval="1.0"/>
         </record>
 
+        <record id="sprint03_project_1_task_1" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_1"/>
+            <field name="user_id" ref="user_sprintdev_bob"/>
+            <field name="sequence" eval="10"/>
+        </record>
         <function model="task.estimation.update.wizard"
                   name="action_save">
             <function model="task.estimation.update.wizard"
@@ -768,6 +774,121 @@
                   name="_track_finalize_as">
             <value eval="ref('project_1_task_1')"/>
             <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_2" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_2"/>
+            <field name="user_id" ref="user_sprintdev_bob"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_2'), 'message': 'Testing aleations.', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_2')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_2'), 'message': 'Will use unbotainium', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=13)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_2')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_3" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_3"/>
+            <field name="user_id" ref="user_sprintdev_bob"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_3')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_3'), 'message': 'Containment vessel design ready.', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=12)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_3')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_4" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_4"/>
+            <field name="user_id" ref="user_sprintdev_bob"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_4')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_4'), 'message': 'Ready to ship', 'planned_hours': 10, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=13)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_4')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_5" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_5"/>
+            <field name="user_id" ref="user_sprintdev_dan"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_5')"/>
+            <value eval="ref('user_sprintdev_dan')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_5'), 'message': 'Missing some duct tape', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_5')"/>
+            <value eval="ref('user_sprintdev_dan')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_5'), 'message': 'Stuck on the details', 'planned_hours': 4}]"/>
+            <value eval="DateTime.now() - relativedelta(days=12)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_5')"/>
+            <value eval="ref('user_sprintdev_dan')"/>
         </function>
 
     </data>
