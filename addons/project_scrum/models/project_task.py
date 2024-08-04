@@ -21,6 +21,15 @@ class Task(models.Model):
         for task in self.filtered(lambda t: t.planned_hours_latest == False):
             task.planned_hours_latest = task.planned_hours
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
+        # ensure the creation of the tracking record if planned_hours
+        # is present in the creation parameters
+        if any(["planned_hours" in vals for vals in vals_list]):
+            res._track_finalize()
+        return res
+
     def action_update_estimation(self):
         self.ensure_one()
         wizard = self.env["task.estimation.update.wizard"].create(

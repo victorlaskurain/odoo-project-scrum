@@ -47,9 +47,13 @@ CREATE AGGREGATE COALESCE_AGG(ANYELEMENT) (
             """
 CREATE VIEW %(table)s AS (
     WITH date_range AS (
-        SELECT MIN(date_begin) AS begin,
-               MAX(date_end)   AS end
-        FROM scrum_sprint
+        SELECT LEAST(MIN(ss.date_begin), MIN(pt.create_date)) AS begin,
+               MAX(ss.date_end)                               AS end
+        FROM       scrum_sprint AS ss
+        LEFT JOIN scrum_sprint_task AS sst
+               ON ss.id = sst.sprint_id
+        LEFT JOIN project_task AS pt
+               ON sst.task_id = pt.id
     ), every_day AS (
         SELECT day::date AS date
         FROM       date_range

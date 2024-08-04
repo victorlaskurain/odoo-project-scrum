@@ -44,11 +44,14 @@ CREATE VIEW scrum_sprint_burndown AS (
                PARTITION BY reference.sprint_id
                ORDER BY reference.date DESC
            ) AS available_hours
-    FROM       sprint_reference  AS reference
-    LEFT JOIN sprint_estimation AS estimation
-           ON estimation.sprint_id = reference.sprint_id
-              AND estimation.date = reference.date
-    WHERE reference.hours > 0 -- remove any day with no activity.
+    FROM       scrum_sprint     AS sprint
+    INNER JOIN sprint_reference AS reference
+            ON sprint.id = reference.sprint_id
+    LEFT  JOIN sprint_estimation AS estimation
+            ON estimation.sprint_id = reference.sprint_id
+               AND estimation.date = reference.date
+    -- remove any day with no activity  but always keep the one that the sprint begins
+    WHERE reference.date = sprint.date_begin OR reference.hours > 0
 );
 """
         )
