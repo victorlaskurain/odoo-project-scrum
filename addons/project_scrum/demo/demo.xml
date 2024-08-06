@@ -119,47 +119,110 @@
         </record>
 
         <record id="project_1_task_1" model="project.task"> <!-- 15107 -->
-            <field name="planned_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Solve nuclear physics</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_1')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_1'), 'message': 'initial estimation', 'planned_hours': 4}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_1')"/>
+        </function>
+
         <record id="project_1_task_2" model="project.task">
-            <field name="planned_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Engineer impossible materials</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_2')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_2'), 'message': 'initial estimation', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_2')"/>
+        </function>
+
         <record id="project_1_task_3" model="project.task">
-            <field name="planned_hours" eval="1"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Design plasma containment</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_3')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_3'), 'message': 'initial estimation', 'planned_hours': 1}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_3')"/>
+        </function>
+
         <record id="project_1_task_4" model="project.task">
-            <field name="planned_hours" eval="2"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Build superconducting magnets</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_4')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_4'), 'message': 'initial estimation', 'planned_hours': 2}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_4')"/>
+        </function>
+
         <record id="project_1_task_5" model="project.task">
-            <field name="planned_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_dan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -168,6 +231,24 @@
             <field name="color">6</field>
             <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_5')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_5'), 'message': 'initial estimation', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_5')"/>
+        </function>
+
         <record id="project_1_task_6" model="project.task">
             <field name="planned_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
@@ -176,10 +257,26 @@
             <field name="name">Assemble cooling</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_6')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_6'), 'message': 'initial estimation', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_6')"/>
+        </function>
+
         <record id="project_1_task_7" model="project.task">
-            <field name="planned_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -188,26 +285,76 @@
             <field name="color">6</field>
             <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_7')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_7'), 'message': 'initial estimation', 'planned_hours': 8}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_7')"/>
+        </function>
+
         <record id="project_1_task_8" model="project.task">
-            <field name="planned_hours" eval="2"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Run initial tests</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_8')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_8'), 'message': 'initial estimation', 'planned_hours': 2}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_8')"/>
+        </function>
+
         <record id="project_1_task_9" model="project.task">
-            <field name="planned_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
             <field name="name">Marketing</field>
             <field name="stage_id" ref="project.project_stage_1"/>
             <field name="color">6</field>
-            <field name="create_date" eval="DateTime.today() - relativedelta(weeks=20)"/>
         </record>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_9')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_scrum.project_1_task_9'), 'message': 'initial estimation', 'planned_hours': 8}]"/>
+            <value eval="DateTime.now() - relativedelta(days=20)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize">
+            <value model="project.task"
+                   eval="ref('project_scrum.project_1_task_9')"/>
+        </function>
+
         <record id="project_1_task_10" model="project.task">
             <field name="planned_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
@@ -756,7 +903,7 @@
             <function model="task.estimation.update.wizard"
                       name="create"
                       eval="[{'task_id': ref('project_1_task_1'), 'message': 'Just finishing to write the last paper...', 'planned_hours': 2}]"/>
-            <value eval="DateTime.now() - relativedelta(days=14)"/>
+            <value eval="DateTime.now() - relativedelta(days=13)"/>
         </function>
         <function model="project.task"
                   name="_track_finalize_as">
@@ -768,7 +915,7 @@
             <function model="task.estimation.update.wizard"
                       name="create"
                       eval="[{'task_id': ref('project_1_task_1'), 'message': 'Done!', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
-            <value eval="DateTime.now() - relativedelta(days=14)"/>
+            <value eval="DateTime.now() - relativedelta(days=12)"/>
         </function>
         <function model="project.task"
                   name="_track_finalize_as">
@@ -787,7 +934,7 @@
             <function model="task.estimation.update.wizard"
                       name="create"
                       eval="[{'task_id': ref('project_1_task_2'), 'message': 'Testing aleations.', 'planned_hours': 6}]"/>
-            <value eval="DateTime.now() - relativedelta(days=14)"/>
+            <value eval="DateTime.now() - relativedelta(days=13)"/>
         </function>
         <function model="project.task"
                   name="_track_finalize_as">
@@ -799,7 +946,7 @@
             <function model="task.estimation.update.wizard"
                       name="create"
                       eval="[{'task_id': ref('project_1_task_2'), 'message': 'Will use unbotainium', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
-            <value eval="DateTime.now() - relativedelta(days=13)"/>
+            <value eval="DateTime.now() - relativedelta(days=11)"/>
         </function>
         <function model="project.task"
                   name="_track_finalize_as">
@@ -889,6 +1036,169 @@
                   name="_track_finalize_as">
             <value eval="ref('project_1_task_5')"/>
             <value eval="ref('user_sprintdev_dan')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_6" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_6"/>
+            <field name="user_id" ref="user_sprintdev_alice"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_6')"/>
+            <value eval="ref('user_sprintdev_alice')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_6'), 'message': 'Lowering temperature.', 'planned_hours': 2}]"/>
+            <value eval="DateTime.now() - relativedelta(days=12)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_6')"/>
+            <value eval="ref('user_sprintdev_alice')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_6'), 'message': 'Everything will be ice cold.', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=11)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_6')"/>
+            <value eval="ref('user_sprintdev_alice')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_7" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_7"/>
+            <field name="user_id" ref="user_sprintdev_bob"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_7')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_7'), 'message': 'Nothing to say.', 'planned_hours': 8}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_7')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_7'), 'message': 'Laying some bricks.', 'planned_hours': 6}]"/>
+            <value eval="DateTime.now() - relativedelta(days=10)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_7')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_7'), 'message': 'Last paint layer and done!.', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=9)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_7')"/>
+            <value eval="ref('user_sprintdev_bob')"/>
+        </function>
+
+        <record id="sprint03_project_1_task_8" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_8"/>
+            <field name="user_id" ref="user_sprintdev_carl"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_8')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_8'), 'message': 'Test bank ready.', 'planned_hours': 2}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_8')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_8'), 'message': 'All tests green.', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=5)"/>
+        </function>
+
+        <record id="sprint03_project_1_task_9" model="scrum.sprint.task">
+            <field name="sprint_id" ref="sprint03"/>
+            <field name="task_id" ref="project_1_task_9"/>
+            <field name="user_id" ref="user_sprintdev_carl"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_9')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_9'), 'message': 'Initial baby steps.', 'planned_hours': 8}]"/>
+            <value eval="DateTime.now() - relativedelta(days=14)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_9')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_9'), 'message': 'Almost done.', 'planned_hours': 2}]"/>
+            <value eval="DateTime.now() - relativedelta(days=7)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_9')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
+        </function>
+        <function model="task.estimation.update.wizard"
+                  name="action_save">
+            <function model="task.estimation.update.wizard"
+                      name="create"
+                      eval="[{'task_id': ref('project_1_task_9'), 'message': 'Campaing in full swing.', 'planned_hours': 0, 'stage_id': ref('project.project_project_stage_2')}]"/>
+            <value eval="DateTime.now() - relativedelta(days=5)"/>
+        </function>
+        <function model="project.task"
+                  name="_track_finalize_as">
+            <value eval="ref('project_1_task_9')"/>
+            <value eval="ref('user_sprintdev_carl')"/>
         </function>
 
     </data>
