@@ -880,6 +880,8 @@
                    eval="(datetime.now() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
             <field name="date_end"
                    eval="datetime.now().strftime('%Y-%m-%d')"/>
+            <field name="velocity_estimated"
+                   eval="0.5"/>
         </record>
         <record id="sprint03_dedication_dev01" model="scrum.sprint.developer.dedication">
             <field name="user_id" ref="user_sprintdev_alice"/>

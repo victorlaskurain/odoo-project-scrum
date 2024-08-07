@@ -40,10 +40,12 @@ CREATE VIEW scrum_sprint_burndown AS (
            reference.sprint_id,
            reference.date,
            estimation.hours AS planned_hours,
-           SUM(reference.hours) OVER (
-               PARTITION BY reference.sprint_id
-               ORDER BY reference.date DESC
-           ) AS available_hours
+           SUM(reference.hours)
+               FILTER (
+                   WHERE reference.date <> sprint.date_end) -- no work done on the sprint en date
+               OVER (
+                   PARTITION BY reference.sprint_id ORDER BY reference.date DESC
+               ) * sprint.velocity_estimated AS available_hours
     FROM       scrum_sprint     AS sprint
     INNER JOIN sprint_reference AS reference
             ON sprint.id = reference.sprint_id
