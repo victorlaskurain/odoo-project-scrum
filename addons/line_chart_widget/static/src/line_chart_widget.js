@@ -4,6 +4,7 @@ import { _lt } from "@web/core/l10n/translation";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { loadJS } from "@web/core/assets";
+import { format } from "web.field_utils";
 import {
     Component,
     onWillStart,
@@ -35,10 +36,21 @@ export class LineChartField extends Component {
         onWillUnmount(() => this.destroyChart());
     }
 
+    formatXLabel(v) {
+        const xLabelFieldName = this.props.dataFields[0];
+        const xLabelFieldDef = this.props.datasetOptions[xLabelFieldName] || {};
+        const formatterType = xLabelFieldDef["type"] || "char";
+        const formatter = format[formatterType];
+        if (formatterType === "date" || formatterType === "datetime") {
+            v = moment(v);
+        }
+        return formatter(v);
+    }
+
     renderChart() {
         this.destroyChart();
         const labelsField = this.props.dataFields[0];
-        const labels = this.data.map((item) => item[labelsField]);
+        const labels = this.data.map((item) => item[labelsField]).map(this.formatXLabel.bind(this));
         const datasets = this.props.dataFields.slice(1).map((fieldName) => {
             let dataset = this.props.datasetOptions[fieldName] || {};
             dataset.data = this.data.map((r) => r[fieldName]);
