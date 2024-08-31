@@ -56,12 +56,14 @@
                                                            },
                                                            'dataFields': ['date', 'planned_hours', 'available_hours'],
                                                            'datasetOptions': {
+                                                               'date': {
+                                                                   'format': 'date'
+                                                               },
                                                                'planned_hours': {
                                                                    'borderColor': 'red'
                                                                },
                                                                'available_hours': {
-                                                                   'borderColor':
-                                                                   'blue'
+                                                                   'borderColor': 'blue'
                                                                }
                                                            }
                                                        }"/>
@@ -152,12 +154,14 @@
                                            },
                                            'dataFields': ['date', 'planned_hours', 'available_hours'],
                                            'datasetOptions': {
+                                               'date': {
+                                                   'format': 'date'
+                                               },
                                                'planned_hours': {
                                                    'borderColor': 'red'
                                                },
                                                'available_hours': {
-                                                   'borderColor':
-                                                   'blue'
+                                                   'borderColor': 'blue'
                                                }
                                            }
                                        }"/>
