@@ -39,7 +39,7 @@ export class LineChartField extends Component {
     formatXLabel(v) {
         const xLabelFieldName = this.props.dataFields[0];
         const xLabelFieldDef = this.props.datasetOptions[xLabelFieldName] || {};
-        const formatterType = xLabelFieldDef["type"] || "char";
+        const formatterType = xLabelFieldDef["format"] || "char";
         const formatter = format[formatterType];
         if (formatterType === "date" || formatterType === "datetime") {
             v = moment(v);
@@ -97,6 +97,21 @@ LineChartField.extractProps = ({ attrs, field }) => {
             display: true,
         },
         animation: {},
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    const dataset = data.datasets[tooltipItem.datasetIndex];
+                    const formatterType = dataset.format || "float";
+                    const formatter = format[formatterType];
+                    var label = dataset.label || "";
+                    if (label) {
+                        label += ": ";
+                    }
+                    label += formatter(tooltipItem.yLabel);
+                    return label;
+                },
+            },
+        },
     };
     const defaultDatasetOptions = {};
     return {
