@@ -1,7 +1,7 @@
 {
     "name": "Project Scrum",
     "summary": """Scrum sprint management.""",
-    "description": """Scrum sprint management.""",
+    "description": """""",
     "author": "Victor Laskurain",
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
