@@ -1,9 +1,7 @@
 {
     "name": "Resource Daily",
     "summary": """Daily resource availability and usage views.""",
-    "description": """
-Provides expanded daily views of the resource calendar and attendance models so
-that you can compute any resource's usage at the SQL level.""",
+    "description": """""",
     "author": "Victor Laskurain",
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
