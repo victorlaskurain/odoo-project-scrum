@@ -284,5 +284,6 @@ WHERE NOT ss.active
             "type": "ir.actions.act_window",
             "res_model": "scrum.sprint.task",
             "domain": [("sprint_id", "=", self.id)],
+            "context": {"default_sprint_id": self.id},
             "view_mode": "kanban,tree",
         }
