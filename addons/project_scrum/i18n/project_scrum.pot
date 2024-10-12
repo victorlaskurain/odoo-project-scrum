@@ -1,0 +1,1470 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_scrum
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-12 09:31+0000\n"
+"PO-Revision-Date: 2024-10-12 09:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_project_kanban
+msgid "<span class=\"o_label ms-1\">Sprints</span>"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_sprint_kanban
+msgid "<span class=\"o_label ms-1\">Tasks</span>"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                        Tasks\n"
+"                                    </span>"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.constraint,message:project_scrum.constraint_scrum_sprint_date_range_valid
+msgid "A sprint cannot end before it begins."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_needaction
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__active
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__active
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Active"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__analytic_account_active
+msgid "Active Analytic Account"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_exception_decoration
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_state
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_type_icon
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_subtasks
+msgid "Allow Sub-tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_timesheets
+msgid "Allow timesheets"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__project_analytic_account_id
+msgid ""
+"Analytic account to which this project, its tasks and its timesheets are linked. \n"
+"Track the costs and revenues of your project by setting this analytic account on your related documents (e.g. sales orders, invoices, purchase orders, vendor bills, expenses etc.).\n"
+"This analytic account can be changed on each task individually if necessary.\n"
+"An analytic account is required in order to use timesheets."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__analytic_account_id
+msgid ""
+"Analytic account to which this task and its timesheets are linked.\n"
+"Track the costs and revenues of your task by setting its analytic account on your related documents (e.g. sales orders, invoices, purchase orders, vendor bills, expenses etc.).\n"
+"By default, the analytic account of the project is set. However, it can be changed on each task individually if necessary."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__ancestor_id
+msgid "Ancestor Task"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Archived"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__user_ids
+msgid "Assignees"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__date_assign
+msgid "Assigning Date"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_attachment_count
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__attachment_ids
+msgid "Attachments that don't come from a message."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__available_hours
+msgid "Available Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_avg
+msgid "Average Rating"
+msgstr ""
+
+#. module: project_scrum
+#: model:project.project,name:project_scrum.project_1
+msgid "Awesome Fusion Reactor"
+msgstr ""
+
+#. module: project_scrum
+#: model:project.project,name:project_scrum.project_3
+msgid "Awesome Lunar Satelite"
+msgstr ""
+
+#. module: project_scrum
+#: model:project.project,name:project_scrum.project_2
+msgid "Awesome Reusable Rocket"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__date_begin
+msgid "Begins"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__dependent_ids
+msgid "Block"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__depend_on_ids
+msgid "Blocked By"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__burndown_ids
+msgid "Burndown"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__partner_is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__child_text
+msgid "Child Text"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__partner_city
+msgid "City"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields.selection,name:project_scrum.selection__scrum_sprint__state__closed
+msgid "Closed"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__is_closed
+msgid "Closing Stage"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__color
+msgid "Color Index"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__commercial_partner_id
+msgid "Commercial Entity"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__company_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__company_id
+msgid "Company"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__displayed_image_id
+msgid "Cover Image"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_task_action_all
+msgid "Create a sprint and add tasks to it."
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_action_all
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_action_all_no_group
+msgid "Create sprints to handle your tasks."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__create_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__create_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__create_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__create_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__create_uid
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__create_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__create_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__create_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__create_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__create_date
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task__planned_hours_latest
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__planned_hours_latest
+msgid "Current estimation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.project_task_estimation_daily_all_action
+#: model:ir.ui.menu,name:project_scrum.project_task_estimation_daily_all_menu
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_graph
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_tree
+msgid "Daily Estimations"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__date
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__date
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
+msgid "Date"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__date_last_stage_update
+msgid ""
+"Date on which the stage of your task has last been modified.\n"
+"Based on this information you can identify tasks that are stalling and get statistics on the time it usually takes to move tasks from one stage to another."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__date_assign
+msgid ""
+"Date on which this task was last assigned (or unassigned). Based on this, "
+"you can get statistics on the time it usually takes to assign tasks."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_weekday
+msgid "Day Of The Week"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__date_deadline
+msgid "Deadline"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__dedication
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__dedication
+msgid "Dedication"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.constraint,message:project_scrum.constraint_scrum_sprint_developer_dedication_dedication_is_valid
+msgid "Dedication must be between 0% and 100%"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__milestone_id
+msgid ""
+"Deliver your services automatically when a milestone is reached by linking "
+"it to a sales order item."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__dependent_tasks_count
+msgid "Dependent Tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__description
+msgid "Description"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_dedication_ids
+msgid "Developer Dedication"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_dedication_daily_ids
+msgid "Developer Dedication per Day"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication_daily
+msgid ""
+"Developer's dedication to sprint (daily).\n"
+"Holds the dedication (number of hours) of any given developer in a specific day of this sprint."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication
+msgid ""
+"Developer's dedication to sprint.\n"
+"Holds the dedication (% of her time) of any given developer in this sprint."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_ids
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid "Developers"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+msgid "Discard"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__display_name
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__display_parent_task_button
+msgid "Display Parent Task Button"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__display_project_id
+msgid "Display Project"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__partner_email
+msgid "Email"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__email_from
+msgid "Email From"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__email_cc
+msgid ""
+"Email addresses that were in the CC of the incoming emails from this task "
+"and that are not currently linked to an existing customer."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__email_cc
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__email_cc
+msgid "Email cc"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__encode_uom_in_days
+msgid "Encode Uom In Days"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_until
+msgid "End Date"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__date_end
+msgid "Ending Date"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__date_end
+msgid "Ends"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_task_view_kanban
+msgid "Estimated hours to finalization"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid "Estimated velocity"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task__estimation_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__estimation_ids
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid "Estimation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__is_closed
+msgid "Folded in Kanban stages are closing stages."
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid ""
+"Follow this sprint to automatically track the events associated to tasks and"
+" issues of this sprint."
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Followed"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_follower_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_partner_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__activity_type_icon
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__fri
+msgid "Fri"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Group By"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__has_late_and_unreached_milestone
+msgid "Has Late And Unreached Milestone"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__has_message
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__effective_hours
+msgid "Hours Spent"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__id
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__id
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_exception_icon
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__activity_exception_icon
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__message_needaction
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__message_has_error
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields.selection,name:project_scrum.selection__scrum_sprint__state__in_progress
+msgid "In progress"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__planned_hours
+msgid "Initially Planned Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__is_analytic_account_id_changed
+msgid "Is Analytic Account Manually Changed"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__is_blocked
+msgid "Is Blocked"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_is_follower
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__is_private
+msgid "Is Private"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__partner_is_company
+msgid "Is a Company"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__legend_blocked
+msgid "Kanban Blocked Explanation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__legend_normal
+msgid "Kanban Ongoing Explanation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__kanban_state_label
+msgid "Kanban State Label"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__legend_done
+msgid "Kanban Valid Explanation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task____last_update
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__date_last_stage_update
+msgid "Last Stage Update"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__write_uid
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__write_uid
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__write_date
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__write_date
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__mail_message_id
+msgid "Mail Message"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_main_attachment_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__attachment_ids
+msgid "Main Attachments"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_mail_message
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__message
+msgid "Message"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_has_error
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__milestone_id
+msgid "Milestone"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_milestones
+msgid "Milestones"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__mon
+msgid "Mon"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__my_activity_date_deadline
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "My Sprints"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__name
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__name
+msgid "Name"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_date_deadline
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_summary
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_type_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__recurrence_message
+msgid "Next Recurrencies"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.actions.act_window,help:project_scrum.project_task_estimation_daily_all_action
+msgid "No estimations found."
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_action_all
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_action_all_no_group
+msgid "No sprints found. Let's create one!"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.actions.act_window,help:project_scrum.scrum_sprint_task_action_all
+msgid "No tasks found."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_needaction_counter
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__remaining_hours
+msgid "Number of allocated hours minus the number of hours spent."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_has_error_counter
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__message_needaction_counter
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__message_has_error_counter
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Open"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__overtime
+msgid "Overtime"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__parent_id
+msgid "Parent Task"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields.selection,name:project_scrum.selection__scrum_sprint__state__draft
+msgid "Pending"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__project_privacy_visibility
+msgid ""
+"People to whom this project and its tasks will be visible.\n"
+"\n"
+"- Invited internal users: when following a project, internal users will get access to all of its tasks without distinction. Otherwise, they will only get access to the specific tasks they are following.\n"
+" A user with the project > administrator access right level can still access this project and its tasks, even if they are not explicitly part of the followers.\n"
+"\n"
+"- All internal users: all internal users can access the project and all of its tasks without distinction.\n"
+"\n"
+"- Invited portal users and all internal users: all internal users can access the project and all of its tasks without distinction.\n"
+"When following a project, portal users will get access to all of its tasks without distinction. Otherwise, they will only get access to the specific tasks they are following.\n"
+"\n"
+"When a project is shared in read-only, the portal user is redirected to their portal. They can view the tasks, but not edit them.\n"
+"When a project is shared in edit, the portal user is redirected to the kanban and list views of the tasks. They can modify a selected number of fields on the tasks.\n"
+"\n"
+"In any case, an internal user with no project access rights can still access a task, provided that they are given the corresponding URL (and that they are part of the followers if the project is private)."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__personal_stage_type_ids
+msgid "Personal Stage"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__personal_stage_id
+msgid "Personal Stage State"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__personal_stage_type_id
+msgid "Personal User Stage"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__partner_phone
+msgid "Phone"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__planned_hours
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__planned_hours
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__planned_hours
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__planned_hours
+msgid "Planned Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__portal_user_names
+msgid "Portal User Names"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__priority
+msgid "Priority"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__progress
+msgid "Progress"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_project
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__project_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__project_id
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__project_id
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Project"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__project_analytic_account_id
+msgid "Project Analytic Account"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__project_color
+msgid "Project Color"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__manager_id
+msgid "Project Manager"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_active
+msgid "Project Rating Status"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__project_privacy_visibility
+msgid "Project Visibility"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__task_properties
+msgid "Properties"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_ids
+msgid "Rating"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_avg_text
+msgid "Rating Avg Text"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_last_feedback
+msgid "Rating Last Feedback"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_last_image
+msgid "Rating Last Image"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_last_value
+msgid "Rating Last Value"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_percentage_satisfaction
+msgid "Rating Satisfaction"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_last_text
+msgid "Rating Text"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__rating_count
+msgid "Rating count"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__recurrence_id
+msgid "Recurrence"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__recurrence_update
+msgid "Recurrence Update"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__recurring_task
+msgid "Recurrent"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_recurring_tasks
+msgid "Recurring Tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__remaining_hours
+msgid "Remaining Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__remaining_hours_percentage
+msgid "Remaining Hours Percentage"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_day
+msgid "Repeat Day"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_interval
+msgid "Repeat Every"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_month
+msgid "Repeat Month"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_on_month
+msgid "Repeat On Month"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_on_year
+msgid "Repeat On Year"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_show_day
+msgid "Repeat Show Day"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_show_dow
+msgid "Repeat Show Dow"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_show_month
+msgid "Repeat Show Month"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_show_week
+msgid "Repeat Show Week"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_unit
+msgid "Repeat Unit"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_week
+msgid "Repeat Week"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_number
+msgid "Repetitions"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_user_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__sat
+msgid "Sat"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.ui.menu,name:project_scrum.project_scrum_menu
+msgid "Scrum"
+msgstr ""
+
+#. module: project_scrum
+#: model:res.groups,name:project_scrum.group_scrum_master
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Scrum Master"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint
+msgid ""
+"Scrum Sprint.\n"
+"A scrum sprint represents a set of tasks expected to be accomplished by a set of developers during an specific date range. Often a sprint will belong to a given project but this is not required so that taking care of task from different project in the same sprint is possible."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__scrum_master_user_id
+msgid "Scrum master"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
+msgid "Search Daily Estimation"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Search Sprint"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: project_scrum
+#. odoo-python
+#: code:addons/project_scrum/models/scrum_sprint.py:0
+#, python-format
+msgid "Some task is included in two active sprints"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_project__sprint_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__sprint_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__sprint_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__sprint_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__sprint_id
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
+msgid "Sprint"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint_burndown
+msgid "Sprint Burndown Chart Data"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_project__sprint_count
+msgid "Sprint Count"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__sprint_task_ids
+msgid "Sprint Task"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__sprint_task_count
+msgid "Sprint Task Count"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint_task
+msgid ""
+"Sprint Task.\n"
+"This records hold the priority of any given task as part of a sprint. A given task can be part of multiple sprints and it's priority can vary from one sprint to the next."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.scrum_sprint_task_action_all
+msgid "Sprint Tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.scrum_sprint_action_all
+#: model:ir.actions.act_window,name:project_scrum.scrum_sprint_action_all_no_group
+#: model:ir.ui.menu,name:project_scrum.scrum_sprint_menu_all
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_project_kanban
+msgid "Sprints"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__stage_id
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__stage_id
+msgid "Stage"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__state
+msgid "State"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__kanban_state
+msgid "Status"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__activity_state
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__subtask_count
+msgid "Sub-task Count"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__child_ids
+msgid "Sub-tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__subtask_effective_hours
+msgid "Sub-tasks Hours Spent"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__subtask_planned_hours
+msgid "Sub-tasks Planned Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__subtask_planned_hours
+msgid ""
+"Sum of the hours allocated for all the sub-tasks (and their own sub-tasks) "
+"linked to this task. Usually less than or equal to the allocated hours of "
+"this task."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__sun
+msgid "Sun"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__tag_ids
+msgid "Tags"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_task
+#: model:ir.model.fields,field_description:project_scrum.field_mail_mail__task_id
+#: model:ir.model.fields,field_description:project_scrum.field_mail_message__task_id
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__task_id
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__task_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__task_id
+#: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__task_id
+#: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
+msgid "Task"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_task_dependencies
+msgid "Task Dependencies"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_task_estimation_update_wizard
+msgid ""
+"Task Estimation Update Wizard.\n"
+"Set new estimation and its justification for a task"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_task_estimation_daily
+msgid ""
+"Task Estimation expanded to every day.\n"
+"Holds the expected hours to finalization for a task at a specifict date or the latest known estimation if that specific date didn't get an updated estimation. It's an intermediate model, not shown by default because it's just a stepping stone to build the burndown chart."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_task_estimation
+msgid ""
+"Task Estimation.\n"
+"Holds the expected hours to finalization for a task at a specifict date"
+msgstr ""
+
+#. module: project_scrum
+#. odoo-python
+#: code:addons/project_scrum/models/scrum_sprint.py:0
+#: model:ir.ui.menu,name:project_scrum.scrum_sprint_task_menu_all
+#: model:project.project,label_tasks:project_scrum.project_1
+#: model:project.project,label_tasks:project_scrum.project_2
+#: model:project.project,label_tasks:project_scrum.project_3
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+#, python-format
+msgid "Tasks"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__recurring_count
+msgid "Tasks in Recurrence"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__personal_stage_id
+msgid "The current user's personal stage."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__personal_stage_type_id
+msgid "The current user's personal task stage."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__email_from
+msgid "These people will receive email."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__date_end
+msgid "This day the sprint is done."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__date_begin
+msgid "This day work on this sprint starts"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__thu
+msgid "Thu"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__subtask_effective_hours
+msgid "Time spent on the sub-tasks (and their own sub-tasks) of this task."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__total_hours_spent
+msgid "Time spent on this task and its sub-tasks (and their own sub-tasks)."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__timesheet_ids
+msgid "Timesheets"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__allow_timesheets
+msgid "Timesheets can be logged on this task."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__name
+msgid "Title"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__total_hours_spent
+msgid "Total Hours"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__tue
+msgid "Tue"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__activity_exception_decoration
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__repeat_type
+msgid "Until"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+msgid "Update"
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_project_task_form
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+msgid "Update Estimation"
+msgstr ""
+
+#. module: project_scrum
+#. odoo-python
+#: code:addons/project_scrum/models/project_task.py:0
+#, python-format
+msgid "Update task %(task_name)s estimation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__user_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__user_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__user_id
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__user_id
+msgid "User"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_project_task_estimation__user_id
+msgid "User who made this estimation"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__velocity_estimated
+msgid "Velocity Estimated"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__website_message_ids
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint__website_message_ids
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__wed
+msgid "Wed"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__working_days_open
+msgid "Working Days to Assign"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__working_days_close
+msgid "Working Days to Close"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__working_hours_open
+msgid "Working Hours to Assign"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__working_hours_close
+msgid "Working Hours to Close"
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.constraint,message:project_scrum.constraint_scrum_sprint_task_unique_sprint_id_task_id
+msgid "You can add a task to sprint only once."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.constraint,message:project_scrum.constraint_scrum_sprint_developer_dedication_daily_unique_sprint_id_user_id
+msgid "You can add a user to sprint day only once."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.constraint,message:project_scrum.constraint_scrum_sprint_developer_dedication_unique_sprint_id_user_id
+msgid "You can add a user to sprint only once."
+msgstr ""
+
+#. module: project_scrum
+#: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__tag_ids
+msgid ""
+"You can only see tags that are already present in your project. If you try "
+"creating a tag that is already existing in other projects, it won't generate"
+" any duplicates."
+msgstr ""
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
+msgid "e.g. Project X Sprint 001"
+msgstr ""
+
+#. module: project_scrum
+#. odoo-javascript
+#: code:addons/project_scrum/static/src/components/message/message.xml:0
+#, python-format
+msgid "on task"
+msgstr ""
