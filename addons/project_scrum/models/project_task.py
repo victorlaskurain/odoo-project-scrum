@@ -36,9 +36,11 @@ class Task(models.Model):
             {
                 "task_id": self.id,
                 "planned_hours": self.planned_hours_latest,
-                "stage_id": self.project_id.stage_id.id
-                if self.env.user.has_group("project.group_project_stages")
-                else False,
+                "stage_id": (
+                    self.project_id.stage_id.id
+                    if self.env.user.has_group("project.group_project_stages")
+                    else False
+                ),
             }
         )
         return {
@@ -64,5 +66,6 @@ class Task(models.Model):
     def _track_finalize_as(self, user_id):
         """Generate tracking message impersonating user_id
 
-        The sole purpose of this method is creating demo records linked to the desired user."""
+        The sole purpose of this method is creating demo records linked to the desired user.
+        """
         return super().with_user(user_id)._track_finalize()
