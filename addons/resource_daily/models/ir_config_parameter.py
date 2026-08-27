@@ -1,7 +1,7 @@
 # Copyright 2023 Victor Laskurain
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models
+from odoo import api, models
 
 
 class IrConfigParameter(models.Model):
@@ -11,6 +11,7 @@ class IrConfigParameter(models.Model):
     # implementation will refresh the view twice. Given that this
     # particular refresh is almost instantaneos we opt to bear with
     # this and keep the implementation trivial
+    @api.model
     def set_param(self, key, value):
         """Refresh view on parameter changes"""
         res = super().set_param(key, value)
