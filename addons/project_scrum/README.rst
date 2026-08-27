@@ -22,8 +22,8 @@ tasks to be completed by a development team in the given time frame.
 
 The Scrum Master can add tasks to a sprint and manage them as he
 pleases. He can even mix tasks from different projects. The level of
-dedication of each team member defined as the % of her time dedicated
-to this sprint can be managed on a daily basis if required although
+dedication of each team member, defined as the % of her time dedicated
+to this sprint, can be managed on a daily basis if required although
 most of the time setting the dedication for the whole sprint in one go
 will be more useful.
 
@@ -65,7 +65,7 @@ Required fields
 
 A sprint has the following required fields:
 
-- The scrum master. This is the user of conhetact for any generic
+- The scrum master. This is the user to contact for any generic
   sprint related issues. It is also the only user who should be
   allowed to modify any of the properties of the sprint, including of
   course the backlog.
@@ -82,7 +82,7 @@ this sprint must belong to this set project. Letting it blank allows
 the team mixing tasks from different project in the same sprint. This
 can be useful for example if you belong to a team that basically does
 support work for different projects (let's say, system management and
-deployment) but still want to reap benefits of Scrum project
+deployment) but still wants to reap benefits of Scrum project
 management.
 
 The estimated velocity (factor)
@@ -136,7 +136,7 @@ For each task the list shows:
 - The developer assigned as responsible for this task on this
   sprint. Can (but it is not expected to) change over time during the
   sprint. This is the person of contact for any issues regarding this
-  particular task. Only developers listed on the `Developers` task can
+  particular task. Only developers listed on the `Developers` tab can
   be used on this field. Although assigning tasks to developers is
   possible here, using the `Tasks Panel` is likely what you will
   prefer.
@@ -151,7 +151,7 @@ that each of them gets a column on the `Tasks Panel`. You are free to
 specify a different dedication level for each developer. The default
 value is 100% meaning that this particular developer works full time
 for the success of this sprint. Set this field to, say, 50% to let the
-application know that only a halve of this particular developer's
+application know that only a half of this particular developer's
 working hours will be spent on this sprint (likely because she has
 other responsabilities). The dedication will be taken into account in
 the burndown chart: lower dedication means lower velocity and thus
@@ -214,15 +214,13 @@ finalization (6 in this case).
 
 - Estimated hours to finalization: this is the last estimation
   registered for this particular task. The `UPDATE ESTIMATION` button
-  of the task must be used to update the estimation.
+  of the task must be used to update the estimation (usually at least
+  once a day, just before the daily meeting).
 
 Comparing this two numbers gives a rough progress indicator for each
 task: as long as the remaining hours are less than the estimated hours
 to finalization we are probably on track for this particular task.
 
-
-  (usually at least
-  once a day, just before the daily meeting) and optionally
 
 How to update a task's estimation
 ---------------------------------
