@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-12 09:31+0000\n"
-"PO-Revision-Date: 2024-10-12 15:54+0200\n"
+"POT-Creation-Date: 2026-08-27 21:09+0000\n"
+"PO-Revision-Date: 2026-08-27 23:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -379,22 +379,14 @@ msgid "Developer Dedication per Day"
 msgstr "Dedicación del desarrollador por día"
 
 #. module: project_scrum
-#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication_daily
-msgid ""
-"Developer's dedication to sprint (daily).\n"
-"Holds the dedication (number of hours) of any given developer in a specific day of this sprint."
-msgstr ""
-"Dedicación del desarrollador (por día).\n"
-"Es la dedicación (número de horas) de un desarrollador dado en un día concreto de este sprint."
+#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication
+msgid "Developer's dedication to sprint"
+msgstr "Dedicación del desarrollador al sprint"
 
 #. module: project_scrum
-#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication
-msgid ""
-"Developer's dedication to sprint.\n"
-"Holds the dedication (% of her time) of any given developer in this sprint."
-msgstr ""
-"Dedicación del desarrollador.\n"
-"Es la dedicación (% de su tiempo) de un desarrollador dado en este sprint."
+#: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication_daily
+msgid "Developer's dedication to sprint (daily)"
+msgstr "Dedicación del desarrollador (por día)"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_ids
@@ -1108,12 +1100,8 @@ msgstr "Scrum Master"
 
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_scrum_sprint
-msgid ""
-"Scrum Sprint.\n"
-"A scrum sprint represents a set of tasks expected to be accomplished by a set of developers during an specific date range. Often a sprint will belong to a given project but this is not required so that taking care of task from different project in the same sprint is possible."
-msgstr ""
-"Sprint de Scrum.\n"
-"Un sprint de scrum representa el conjunto de tareas que se espera que un equipo de desarrollares puedan completar en un tiempo dado. A menudo un sprint estará asociado a un proyecto pero esto no es obligatorio de manera que es posible ocuparse de tareas de distintos proyectos dentro de un mismo sprint."
+msgid "Scrum Sprint"
+msgstr "Sprint de Scrum"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__scrum_master_user_id
@@ -1169,6 +1157,7 @@ msgid "Sprint Count"
 msgstr "Número de sprints"
 
 #. module: project_scrum
+#: model:ir.model,name:project_scrum.model_scrum_sprint_task
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__sprint_task_ids
 msgid "Sprint Task"
 msgstr "Tarea de sprint"
@@ -1177,15 +1166,6 @@ msgstr "Tarea de sprint"
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__sprint_task_count
 msgid "Sprint Task Count"
 msgstr "Número de tareas del sprint"
-
-#. module: project_scrum
-#: model:ir.model,name:project_scrum.model_scrum_sprint_task
-msgid ""
-"Sprint Task.\n"
-"This records hold the priority of any given task as part of a sprint. A given task can be part of multiple sprints and it's priority can vary from one sprint to the next."
-msgstr ""
-"Tarea del sprint.\n"
-"Registra la prioridad de una tarea en el contexto de un sprint. Una tarea dada puede ser parte de distintos sprints y su prioridad puede variar de un sprint al siguiente."
 
 #. module: project_scrum
 #: model:ir.actions.act_window,name:project_scrum.scrum_sprint_task_action_all

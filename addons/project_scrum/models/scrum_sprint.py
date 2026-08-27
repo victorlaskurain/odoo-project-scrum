@@ -9,11 +9,12 @@ _logger = logging.getLogger(__name__)
 
 
 class SprintDeveloperDedication(models.Model):
+    """Developer's dedication to sprint."
+    Holds the dedication (% of her time) of any given developer in this sprint.
+    """
+
     _name = "scrum.sprint.developer.dedication"
-    _description = (
-        "Developer's dedication to sprint.\n"
-        "Holds the dedication (% of her time) of any given developer in this sprint."
-    )
+    _description = "Developer's dedication to sprint"
 
     name = fields.Char(related="user_id.name")
     sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
@@ -35,12 +36,13 @@ class SprintDeveloperDedication(models.Model):
 
 
 class SprintDeveloperDedicationDaily(models.Model):
+    """Developer's dedication to sprint (daily).
+    Holds the dedication (number of hours) of any given developer in a
+    specific day of this sprint.
+    """
+
     _name = "scrum.sprint.developer.dedication.daily"
-    _description = (
-        "Developer's dedication to sprint (daily).\n"
-        "Holds the dedication (number of hours) of any given developer in a "
-        "specific day of this sprint."
-    )
+    _description = "Developer's dedication to sprint (daily)"
 
     sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
     user_id = fields.Many2one("res.users", required=True, index=True)
@@ -57,15 +59,16 @@ class SprintDeveloperDedicationDaily(models.Model):
 
 
 class SprintTask(models.Model):
+    """Sprint Task.
+    This records hold the priority of any given task as part of a sprint.
+    A given task can be part of multiple sprints and it's priority can vary
+    from one sprint to the next.
+    """
+
     _name = "scrum.sprint.task"
     _order = "sequence, priority, id DESC"
     _inherits = {"project.task": "task_id"}
-    _description = (
-        "Sprint Task.\n"
-        "This records hold the priority of any given task as part of a sprint. "
-        "A given task can be part of multiple sprints and it's priority can vary "
-        "from one sprint to the next."
-    )
+    _description = "Sprint Task"
 
     sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
     task_id = fields.Many2one(
@@ -117,14 +120,15 @@ class SprintTask(models.Model):
 
 
 class Sprint(models.Model):
+    """Scrum Sprint."
+    A scrum sprint represents a set of tasks expected to be accomplished
+    by a set of developers during an specific date range. Often a sprint
+    will belong to a given project but this is not required so that taking
+    care of task from different project in the same sprint is possible.
+    """
+
     _name = "scrum.sprint"
-    _description = (
-        "Scrum Sprint.\n"
-        "A scrum sprint represents a set of tasks expected to be accomplished "
-        "by a set of developers during an specific date range. Often a sprint "
-        "will belong to a given project but this is not required so that taking "
-        "care of task from different project in the same sprint is possible."
-    )
+    _description = "Scrum Sprint"
     _inherit = ["mail.thread.cc", "mail.activity.mixin"]
 
     _sql_constraints = [
