@@ -76,7 +76,9 @@ export class LineChartField extends Component {
         const relationField = this.props.field.relation_field;
         const modelName = this.props.field.relation;
         // <expression for form views> || <expression for kanban views>
-        const parent_id = this.props.value.model.root.resId || this.props.value.parentRecord.resId;
+        const parent_id =
+            this.props.value.model.root.resId ||
+            (this.props.value.parentRecord && this.props.value.parentRecord.resId);
         const data = await this.orm.searchRead(
             modelName,
             [[relationField, "=", parent_id]],
