@@ -14,3 +14,4 @@ access_scrum_sprint_project_user,scrum.sprint by project user,model_scrum_sprint
 access_project_task,project.task,model_task_estimation_update_wizard,project.group_project_user,1,1,1,1
 access_task_on_partner,project.task on partners,model_task_estimation_update_wizard,base.group_user,1,0,0,0
 access_scrum_sprint_burndown,Scrum.sprint.burndown by project user,model_scrum_sprint_burndown,project.group_project_user,1,0,0,0
+access_add_to_scrum_sprint_wizard,access_add_to_scrum_sprint_wizard,project_scrum.model_add_to_scrum_sprint_wizard,base.group_user,1,1,1,0

@@ -186,6 +186,7 @@ class Sprint(models.Model):
         string="Ends",
         help="This day the sprint is done.",
     )
+    is_open = fields.Boolean(compute="_compute_is_open", search="_search_is_open")
     sprint_task_ids = fields.One2many("scrum.sprint.task", "sprint_id")
     sprint_task_count = fields.Integer(compute="_compute_sprint_task_count")
     burndown_ids = fields.One2many("scrum.sprint.burndown", "sprint_id")
@@ -200,6 +201,18 @@ class Sprint(models.Model):
         tracking=30,
     )  # :TODO: compute from dates
     active = fields.Boolean(default=True)
+
+    @api.depends("date_end")
+    def _compute_is_open(self):
+        today = fields.Date.today()
+        for sprint in self:
+            sprint.is_open = sprint.date_end >= today
+
+    def _search_is_open(self, operator, value):
+        if operator not in ["=", "!="] or not isinstance(value, bool):
+            raise exceptions.UserError(_("Operation not supported"))
+        today = fields.Date.today()
+        return [("date_end", value and ">=" or "<", today)]
 
     @api.depends("developer_dedication_ids")
     def _compute_developer_ids(self):

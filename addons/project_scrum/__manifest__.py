@@ -25,6 +25,7 @@
         "views/project_task_estimation_daily_views.xml",
         "views/project_views.xml",
         "wizard/task_estimation_update_wizard.xml",
+        "wizard/add_to_scrum_sprint_wizard.xml",
     ],
     "assets": {
         "mail.assets_messaging": ["project_scrum/static/src/models/*"],

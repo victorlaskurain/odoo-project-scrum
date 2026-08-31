@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_task_estimation_update_wizard_form">
+            <field name="name">add.to.scrum.sprint.wizard.form</field>
+            <field name="model">add.to.scrum.sprint.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Add to selected Sprint">
+                    <group>
+                        <field name="scrum_sprint_id"/>
+                    </group>
+                    <footer>
+                        <button string="Add to Sprint"
+                                type="object"
+                                name="action_add_to_sprint"
+                                hotkey="a"
+                                />
+                        <button string="Discard"
+                                special="cancel"
+                                data-hotkey="z"
+                                />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

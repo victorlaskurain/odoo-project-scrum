@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-27 21:09+0000\n"
-"PO-Revision-Date: 2026-08-27 23:18+0200\n"
+"PO-Revision-Date: 2026-08-31 20:43+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -87,6 +87,21 @@ msgstr "Estado de la actividad"
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_add_to_scrum_sprint
+msgid "Add To Scrum Sprint"
+msgstr "Agregar a sprint de scrum"
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+msgid "Add to Sprint"
+msgstr "Agregar a sprint"
+
+#. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+msgid "Add to selected Sprint"
+msgstr "Agregar a sprint seleccionado"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_subtasks
@@ -606,6 +621,11 @@ msgid "Is Follower"
 msgstr "Es un seguidor"
 
 #. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__is_open
+msgid "Is Open"
+msgstr "Está abierto"
+
+#. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__is_private
 msgid "Is Private"
 msgstr "Es privado"
@@ -636,6 +656,7 @@ msgid "Kanban Valid Explanation"
 msgstr "Explicación del kanban válido"
 
 #. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint____last_update
@@ -653,6 +674,7 @@ msgid "Last Stage Update"
 msgstr "Última actualización de la etapa"
 
 #. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_uid
@@ -663,6 +685,7 @@ msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: project_scrum
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_date
@@ -810,6 +833,13 @@ msgstr "Número de mensajes con error de envío"
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
 msgid "Open"
 msgstr "Abierto"
+
+#. module: project_scrum
+#. odoo-python
+#: code:addons/project_scrum/models/scrum_sprint.py:0
+#, python-format
+msgid "Operation not supported"
+msgstr "Operación no soportada"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__overtime
@@ -1250,6 +1280,7 @@ msgstr "Etiquetas"
 
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_project_task
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__task_ids
 #: model:ir.model.fields,field_description:project_scrum.field_mail_mail__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_mail_message__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__task_id
@@ -1258,7 +1289,7 @@ msgstr "Etiquetas"
 #: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__task_id
 #: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
 msgid "Task"
-msgstr "Tareas"
+msgstr "Tarea"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__allow_task_dependencies

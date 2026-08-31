@@ -248,3 +248,10 @@ description of the update and even change the stage in one
 operation. This is not only easier than doing it in several steps. It
 also logs all the information in a single chatbox message instead of
 two, three or more.
+
+How to add tasks to a sprint
+----------------------------
+
+You can do it directly from the sprint but you might find it is easier to go to
+a list of tasks, select the desired ones and execute the "Add to Scrum Sprint"
+action.
