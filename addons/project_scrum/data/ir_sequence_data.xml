@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2023 Victor Laskurain
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data noupdate="1">
+        <record id="seq_scrum_sprint" model="ir.sequence">
+            <field name="name">SCRUM Sprint</field>
+            <field name="code">scrum.sprint</field>
+            <field name="prefix">SCRUM/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

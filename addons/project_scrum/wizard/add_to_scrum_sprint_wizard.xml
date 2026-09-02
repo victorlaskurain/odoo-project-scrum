@@ -4,19 +4,20 @@
 <odoo>
     <data>
 
-        <record model="ir.ui.view" id="view_task_estimation_update_wizard_form">
+        <record id="view_add_to_scrum_sprint_wizard_form" model="ir.ui.view">
             <field name="name">add.to.scrum.sprint.wizard.form</field>
             <field name="model">add.to.scrum.sprint.wizard</field>
             <field name="arch" type="xml">
                 <form string="Add to selected Sprint">
                     <group>
+                        <field name="task_ids" invisible="1"/>
                         <field name="scrum_sprint_id"/>
                     </group>
                     <footer>
                         <button string="Add to Sprint"
                                 type="object"
                                 name="action_add_to_sprint"
-                                hotkey="a"
+                                class="btn-primary"
                                 />
                         <button string="Discard"
                                 special="cancel"

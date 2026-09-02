@@ -6,7 +6,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
     "category": "Services/Project",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     # any module necessary for this one to work correctly
     "depends": [
         "base",
@@ -20,6 +20,7 @@
     "data": [
         "security/project_scrum_security.xml",
         "security/ir.model.access.csv",
+        "data/ir_sequence_data.xml",
         "views/scrum_sprint_views.xml",
         "views/project_task_views.xml",
         "views/project_task_estimation_daily_views.xml",

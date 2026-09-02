@@ -29,25 +29,33 @@ class Message(models.Model):
     def _get_message_format_fields(self):
         return super()._get_message_format_fields() + ["task_id"]
 
+    @api.model
+    def _get_sprint_chatter_extra_domains(self, sprint_id):
+        """Return extra mail.message domains to include in a sprint chatter."""
+        task_ids = (
+            self.env["scrum.sprint.task"]
+            .search([("sprint_id", "=", sprint_id)])
+            .mapped("task_id")
+            .ids
+        )
+        return [
+            [
+                ("res_id", "in", task_ids),
+                ("model", "=", "project.task"),
+                ("message_type", "!=", "user_notification"),
+            ]
+        ]
+
     # If the call is a request for the messages of a sprint, then:
-    #   a) add tasks to the resultset
+    #   a) add related records (tasks, ...) to the resultset
     #   b) set sprint_id in context for the benefit of _message_format
     @api.model
     def _message_fetch(self, domain, max_id=None, min_id=None, limit=30):
         if domain[1:2] == [("model", "=", "scrum.sprint")]:
             sprint_id = domain[0][2]
-            task_ids = (
-                self.env["scrum.sprint.task"]
-                .search([("sprint_id", "=", sprint_id)])
-                .mapped("task_id")
-                .ids
-            )
-            tasks_domain = [
-                ("res_id", "in", task_ids),
-                ("model", "=", "project.task"),
-                ("message_type", "!=", "user_notification"),
-            ]
-            domain = OR([domain, tasks_domain])
+            extra_domains = self._get_sprint_chatter_extra_domains(sprint_id)
+            if extra_domains:
+                domain = OR([domain] + extra_domains)
             res = (
                 super()
                 ._message_fetch(domain, max_id, min_id, limit)

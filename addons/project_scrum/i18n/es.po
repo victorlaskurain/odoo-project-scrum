@@ -89,17 +89,18 @@ msgid "Activity Type Icon"
 msgstr "Icono de tipo de actividad"
 
 #. module: project_scrum
-#: model:ir.actions.act_window,name:project_scrum.action_add_to_scrum_sprint
-msgid "Add To Scrum Sprint"
-msgstr "Agregar a sprint de scrum"
+#: model:ir.model,name:project_scrum.model_add_to_scrum_sprint_wizard
+msgid "Add Tasks to Sprint"
+msgstr "Agregar tareas a sprint"
 
 #. module: project_scrum
-#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+#: model:ir.actions.act_window,name:project_scrum.action_add_to_scrum_sprint
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_add_to_scrum_sprint_wizard_form:17
 msgid "Add to Sprint"
 msgstr "Agregar a sprint"
 
 #. module: project_scrum
-#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_add_to_scrum_sprint_wizard_form:11
 msgid "Add to selected Sprint"
 msgstr "Agregar a sprint seleccionado"
 
@@ -410,6 +411,7 @@ msgid "Developers"
 msgstr "Desarrollares"
 
 #. module: project_scrum
+#: model_terms:ir.ui.view,arch_db:project_scrum.view_add_to_scrum_sprint_wizard_form:22
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
 msgid "Discard"
 msgstr "Descartar"
@@ -1171,6 +1173,7 @@ msgstr "Al menos una tarea está incluida en dos sprints activos"
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__sprint_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__sprint_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__sprint_id
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__scrum_sprint_id
 #: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
 msgid "Sprint"

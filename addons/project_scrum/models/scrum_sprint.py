@@ -4,6 +4,7 @@
 import logging
 
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -17,7 +18,12 @@ class SprintDeveloperDedication(models.Model):
     _description = "Developer's dedication to sprint"
 
     name = fields.Char(related="user_id.name")
-    sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
+    sprint_id = fields.Many2one(
+        "scrum.sprint",
+        required=True,
+        index=True,
+        ondelete="cascade",
+    )
     user_id = fields.Many2one("res.users", required=True, index=True)
     dedication = fields.Float(required=True, default=1.0)
 
@@ -44,7 +50,9 @@ class SprintDeveloperDedicationDaily(models.Model):
     _name = "scrum.sprint.developer.dedication.daily"
     _description = "Developer's dedication to sprint (daily)"
 
-    sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
+    sprint_id = fields.Many2one(
+        "scrum.sprint", required=True, index=True, ondelete="cascade"
+    )
     user_id = fields.Many2one("res.users", required=True, index=True)
     date = fields.Date(required=True)
     dedication = fields.Float(required=True, default=0.0)
@@ -70,7 +78,9 @@ class SprintTask(models.Model):
     _inherits = {"project.task": "task_id"}
     _description = "Sprint Task"
 
-    sprint_id = fields.Many2one("scrum.sprint", required=True, index=True)
+    sprint_id = fields.Many2one(
+        "scrum.sprint", required=True, index=True, ondelete="cascade"
+    )
     task_id = fields.Many2one(
         "project.task", required=True, index=True, ondelete="cascade"
     )
@@ -139,7 +149,11 @@ class Sprint(models.Model):
         )
     ]
 
-    name = fields.Char(required=True)
+    name = fields.Char(
+        required=True,
+        copy=False,
+        default=lambda self: _("New"),
+    )
     project_id = fields.Many2one(
         "project.project", required=False, domain="[('company_id', '=', company_id)]"
     )
@@ -210,7 +224,7 @@ class Sprint(models.Model):
 
     def _search_is_open(self, operator, value):
         if operator not in ["=", "!="] or not isinstance(value, bool):
-            raise exceptions.UserError(_("Operation not supported"))
+            raise UserError(_("Operation not supported"))
         today = fields.Date.today()
         return [("date_end", value and ">=" or "<", today)]
 
@@ -304,3 +318,61 @@ WHERE NOT ss.active
             "context": {"default_sprint_id": self.id},
             "view_mode": "kanban,tree",
         }
+
+    def action_generate_next_sprint(self):
+        """Create the next sprint by duplicating this one.
+
+        The new sprint starts on this sprint's end date and lasts the same
+        number of calendar days. Developers are copied as-is. Only
+        unfinished tasks are carried over.
+        """
+        self.ensure_one()
+        duration = self.date_end - self.date_begin
+        next_sprint = self.copy(
+            {
+                "date_begin": self.date_end,
+                "date_end": self.date_end + duration,
+                "developer_dedication_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "user_id": dedication.user_id.id,
+                            "dedication": dedication.dedication,
+                        },
+                    )
+                    for dedication in self.developer_dedication_ids
+                ],
+                "sprint_task_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "task_id": sprint_task.task_id.id,
+                            "sequence": sprint_task.sequence,
+                            "user_id": sprint_task.user_id.id,
+                        },
+                    )
+                    for sprint_task in self.sprint_task_ids.filtered(
+                        lambda rec: not rec.is_closed
+                    )
+                ],
+            }
+        )
+        return {
+            "type": "ir.actions.act_window",
+            "res_model": "scrum.sprint",
+            "res_id": next_sprint.id,
+            "view_mode": "form",
+            "views": [(False, "form")],
+        }
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        """Assign a sequence number when the sprint name is still the default."""
+        for vals in vals_list:
+            if vals.get("name", _("New")) == _("New"):
+                vals["name"] = self.env["ir.sequence"].next_by_code(
+                    "scrum.sprint", sequence_date=vals.get("date_begin")
+                ) or _("New")
+        return super().create(vals_list)
