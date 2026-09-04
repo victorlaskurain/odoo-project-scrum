@@ -81,6 +81,13 @@ class SprintTask(models.Model):
     sprint_id = fields.Many2one(
         "scrum.sprint", required=True, index=True, ondelete="cascade"
     )
+    project_id = fields.Many2one(
+        "project.project",
+        string="Project",
+        related="task_id.project_id",
+        store=True,
+        precompute=True,
+    )
     task_id = fields.Many2one(
         "project.task", required=True, index=True, ondelete="cascade"
     )
