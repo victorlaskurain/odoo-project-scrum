@@ -14,6 +14,39 @@ class Task(models.Model):
         compute="_compute_planned_hours_latest",
         store=True,
     )
+    sprint_task_ids = fields.One2many("scrum.sprint.task", "task_id")
+    sprint_ids = fields.Many2many(
+        "scrum.sprint",
+        compute="_compute_sprint_ids",
+        string="Sprints",
+    )
+    sprint_count = fields.Integer(compute="_compute_sprint_ids")
+
+    @api.depends("sprint_task_ids.sprint_id")
+    def _compute_sprint_ids(self):
+        for task in self:
+            task.sprint_ids = task.sprint_task_ids.sprint_id
+            task.sprint_count = len(task.sprint_ids)
+
+    def action_view_sprints(self):
+        self.ensure_one()
+        sprints = self.sprint_ids
+        action = {
+            "type": "ir.actions.act_window",
+            "name": _("Sprints"),
+            "res_model": "scrum.sprint",
+            "view_mode": "kanban,tree,form",
+            "domain": [("id", "in", sprints.ids)],
+        }
+        if len(sprints) == 1:
+            action.update(
+                {
+                    "view_mode": "form",
+                    "res_id": sprints.id,
+                    "views": [(False, "form")],
+                }
+            )
+        return action
 
     @api.depends("planned_hours")
     def _compute_planned_hours_latest(self):

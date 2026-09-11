@@ -208,7 +208,7 @@ class Sprint(models.Model):
         help="This day the sprint is done.",
     )
     is_open = fields.Boolean(compute="_compute_is_open", search="_search_is_open")
-    sprint_task_ids = fields.One2many("scrum.sprint.task", "sprint_id")
+    sprint_task_ids = fields.One2many("scrum.sprint.task", "sprint_id", copy=False)
     sprint_task_count = fields.Integer(compute="_compute_sprint_task_count")
     burndown_ids = fields.One2many("scrum.sprint.burndown", "sprint_id")
     velocity_estimated = fields.Float(required=True, default=1.0)
@@ -361,7 +361,7 @@ WHERE NOT ss.active
                         },
                     )
                     for sprint_task in self.sprint_task_ids.filtered(
-                        lambda rec: not rec.is_closed
+                        lambda rec: rec.planned_hours > 0
                     )
                 ],
             }

@@ -15,6 +15,14 @@
                             string="Update Estimation"
                             />
                 </header>
+                <div name="button_box" position="inside">
+                    <button name="action_view_sprints"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-calendar">
+                        <field name="sprint_count" widget="statinfo" string="Sprints"/>
+                    </button>
+                </div>
                 <xpath expr="//field[@name='planned_hours']/parent::div" position="after">
                     <field name="planned_hours_latest"
                            class="oe_inline ms-2"
