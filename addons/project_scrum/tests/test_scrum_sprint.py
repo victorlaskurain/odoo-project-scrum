@@ -10,46 +10,28 @@ from odoo.tests.common import TransactionCase
 class TestScrumSprint(TransactionCase):
     def setUp(self):
         super().setUp()
-        Project = self.env["project.project"]
-        TaskType = self.env["project.task.type"]
-        self.project = Project.create({"name": "Sprint Test Project"})
-        self.stage_open = self.project.type_ids.filtered(lambda rec: not rec.fold)[:1]
-        if not self.stage_open:
-            self.stage_open = TaskType.create(
-                {
-                    "name": "In Progress",
-                    "fold": False,
-                    "project_ids": [(4, self.project.id)],
-                }
-            )
-        self.stage_done = self.project.type_ids.filtered(lambda rec: rec.fold)[:1]
-        if not self.stage_done:
-            self.stage_done = TaskType.create(
-                {
-                    "name": "Done",
-                    "fold": True,
-                    "project_ids": [(4, self.project.id)],
-                }
-            )
+        self.project = self.env["project.project"].create(
+            {"name": "Sprint Test Project"}
+        )
 
     def test_generate_next_sprint(self):
-        """Next sprint copies the current one with shifted dates and open tasks."""
+        """Next sprint copies the current one with shifted dates and unfinished tasks."""
         Task = self.env["project.task"]
         Sprint = self.env["scrum.sprint"]
         date_begin = fields.Date.from_string("2026-01-01")
         date_end = fields.Date.from_string("2026-01-15")
-        open_task = Task.create(
+        unfinished_task = Task.create(
             {
-                "name": "Open task",
+                "name": "Unfinished task",
                 "project_id": self.project.id,
-                "stage_id": self.stage_open.id,
+                "planned_hours": 5,
             }
         )
-        done_task = Task.create(
+        finished_task = Task.create(
             {
-                "name": "Done task",
+                "name": "Finished task",
                 "project_id": self.project.id,
-                "stage_id": self.stage_done.id,
+                "planned_hours": 0,
             }
         )
         sprint = Sprint.create(
@@ -68,7 +50,7 @@ class TestScrumSprint(TransactionCase):
                         0,
                         0,
                         {
-                            "task_id": open_task.id,
+                            "task_id": unfinished_task.id,
                             "sequence": 10,
                             "user_id": self.env.user.id,
                         },
@@ -77,7 +59,7 @@ class TestScrumSprint(TransactionCase):
                         0,
                         0,
                         {
-                            "task_id": done_task.id,
+                            "task_id": finished_task.id,
                             "sequence": 20,
                         },
                     ),
@@ -98,7 +80,7 @@ class TestScrumSprint(TransactionCase):
         self.assertEqual(len(next_sprint.developer_dedication_ids), 1)
         self.assertEqual(next_sprint.developer_dedication_ids.user_id, self.env.user)
         self.assertEqual(next_sprint.developer_dedication_ids.dedication, 0.5)
-        self.assertEqual(next_sprint.sprint_task_ids.task_id, open_task)
+        self.assertEqual(next_sprint.sprint_task_ids.task_id, unfinished_task)
         self.assertEqual(next_sprint.sprint_task_ids.sequence, 10)
         self.assertEqual(next_sprint.sprint_task_ids.user_id, self.env.user)
         self.assertEqual(len(sprint.sprint_task_ids), 2)
