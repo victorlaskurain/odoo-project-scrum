@@ -13,6 +13,7 @@ class Task(models.Model):
         tracking=True,
         compute="_compute_planned_hours_latest",
         store=True,
+        readonly=False
     )
     sprint_task_ids = fields.One2many("scrum.sprint.task", "task_id")
     sprint_ids = fields.Many2many(

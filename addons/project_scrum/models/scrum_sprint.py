@@ -361,7 +361,7 @@ WHERE NOT ss.active
                         },
                     )
                     for sprint_task in self.sprint_task_ids.filtered(
-                        lambda rec: rec.planned_hours > 0
+                        lambda rec: rec.planned_hours_latest > 0
                     )
                 ],
             }
