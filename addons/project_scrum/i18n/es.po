@@ -1,13 +1,28 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# 	* project_scrum
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-11 07:22+0000\n"
-"PO-Revision-Date: 2026-09-11 07:22+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2026-09-28 07:15+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#~ # Translation of Odoo Server.
+#~ # This file contains the translation of the following modules:
+#~ # 	* project_scrum
+#~ #
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: Odoo Server 16.0\n"
+#~ "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-31 21:03+0000\n"
+"PO-Revision-Date: 2026-08-31 23:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +33,7 @@ msgstr ""
 #. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_project_kanban
 msgid "<span class=\"o_label ms-1\">Sprints</span>"
-msgstr "<span class=\"o_label ms-1\">Sprints</span>"
+msgstr ""
 
 #. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_sprint_kanban
@@ -222,7 +237,7 @@ msgstr "Bloqueado por"
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__burndown_ids
 msgid "Burndown"
-msgstr "Burndown"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model.fields,help:project_scrum.field_scrum_sprint_task__partner_is_company
@@ -416,7 +431,7 @@ msgstr "Dedicación del desarrollador al sprint"
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication_daily
 msgid "Developer's dedication to sprint (daily)"
-msgstr "Dedicación del desarrollador (por día)"
+msgstr "Dedicación del desarrollador al sprint (diaria)"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_ids
@@ -596,7 +611,7 @@ msgstr "Horas dedicadas"
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__id
 #: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__activity_exception_icon
@@ -1169,17 +1184,18 @@ msgstr ""
 #: model:res.groups,name:project_scrum.group_scrum_master
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
 msgid "Scrum Master"
-msgstr "Scrum Master"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_scrum_sprint
+#: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__scrum_sprint_id
 msgid "Scrum Sprint"
-msgstr "Sprint de Scrum"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__scrum_master_user_id
 msgid "Scrum master"
-msgstr "Scrum master"
+msgstr ""
 
 #. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.project_task_estimation_daily_view_filter
@@ -1219,7 +1235,7 @@ msgstr "Al menos una tarea está incluida en dos sprints activos"
 #: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_filter
 msgid "Sprint"
-msgstr "Sprint"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_scrum_sprint_burndown
@@ -1263,7 +1279,7 @@ msgstr "Tareas del sprint"
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_project_task_form
 #, python-format
 msgid "Sprints"
-msgstr "Sprints"
+msgstr ""
 
 #. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_tree
@@ -1493,13 +1509,7 @@ msgid "Until"
 msgstr "Hasta"
 
 #. module: project_scrum
-#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
-msgid "Update"
-msgstr "Actualizar"
-
-#. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_project_task_form
-#: model_terms:ir.ui.view,arch_db:project_scrum.view_task_estimation_update_wizard_form
 msgid "Update Estimation"
 msgstr "Actualizar estimación"
 
@@ -1590,6 +1600,11 @@ msgstr ""
 "Solo puede ver las etiquetas que ya están presentes en su proyecto. Si "
 "intenta crear una etiqueta que ya existe en otros proyectos, no se generará "
 "ningún duplicado."
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_add_to_scrum_sprint_wizard
+msgid "add.to.scrum.sprint.wizard"
+msgstr ""
 
 #. module: project_scrum
 #: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
