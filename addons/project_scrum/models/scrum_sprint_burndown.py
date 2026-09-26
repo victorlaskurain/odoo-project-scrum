@@ -1,8 +1,7 @@
 # Copyright 2023 Victor Laskurain
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields
-
+from odoo import api, models, fields
 
 class ScrumSprintBurndown(models.Model):
     _name = "scrum.sprint.burndown"
@@ -54,3 +53,37 @@ CREATE OR REPLACE VIEW scrum_sprint_burndown AS (
 );
 """
         )
+
+    # optimización salvaje para el caso (muy común) en el que se
+    # desean obtener los datos para pintar el gráfico. En search_read
+    # se captura el caso específico y se agrega un parámetro en el
+    # contexto que luego se lee en _apply_ir_rules. _apply_ir_rules es
+    # el único punto en el que podemos modificar la quey que se
+    # ejecuta.
+    @api.model
+    def search_read(
+        self, domain=None, fields=None, offset=0, limit=None, order=None, **read_kwargs
+    ):
+        try:
+            assert len(domain) == 1
+            [[sprint_id_txt, eq_txt, sprint_id]] = domain
+            assert sprint_id_txt == "sprint_id" and eq_txt == "="
+            fields_sorted = fields.copy()
+            fields_sorted.sort()
+            assert fields_sorted == ["available_hours", "date", "planned_hours"]
+        except AssertionError: # no estamos en el caso especial
+            res = super().search_read(
+                domain, fields, offset, limit, order, **read_kwargs
+            )
+        else:
+            res = super(
+                ScrumSprintBurndown, self.with_context(search_sprint_id=sprint_id)
+            ).search_read(domain, fields, offset, limit, order, **read_kwargs)
+        return res
+
+    @api.model
+    def _apply_ir_rules(self, query, mode="read"):
+        super()._apply_ir_rules(query, mode)
+        sprint_id = self._context.get("search_sprint_id")
+        if sprint_id:
+            query.add_where("sprint_id = %s", (sprint_id,))
