@@ -29,69 +29,24 @@ DROP FUNCTION IF EXISTS COALESCE_AGG_sfunc(state ANYELEMENT, value ANYELEMENT) C
         )
         self.env.cr.execute(
             """
-CREATE FUNCTION COALESCE_AGG_sfunc(state ANYELEMENT, value ANYELEMENT) RETURNS ANYELEMENT AS
-$$
-    SELECT COALESCE(value, state);
-$$ LANGUAGE SQL;
-"""
-        )
-        self.env.cr.execute(
-            """
-CREATE AGGREGATE COALESCE_AGG(ANYELEMENT) (
-    SFUNC = COALESCE_AGG_SFUNC,
-    STYPE  = ANYELEMENT
-);
-"""
-        )
-        self.env.cr.execute(
-            """
-CREATE VIEW %(table)s AS (
-    WITH date_range AS (
-        SELECT LEAST(MIN(ss.date_begin), MIN(pt.create_date)) AS begin,
-               MAX(ss.date_end)                               AS end
-        FROM       scrum_sprint AS ss
-        LEFT JOIN scrum_sprint_task AS sst
-               ON ss.id = sst.sprint_id
-        LEFT JOIN project_task AS pt
-               ON sst.task_id = pt.id
-    ), every_day AS (
-        SELECT day::date AS date
-        FROM       date_range
-        CROSS JOIN GENERATE_SERIES(date_range.begin, date_range.end, '1 DAY') AS day
-    ), last_estimation_of_date AS (
-        SELECT t.task_id,
-               t.date_day AS date,
-               t.planned_hours
-        FROM (
-            SELECT pte.*,
-                   date::date AS date_day,
-                   LAST_VALUE(id) OVER task_window AS last_id
-            FROM project_task_estimation AS pte
-            WINDOW task_window AS (
-                PARTITION BY pte.task_id, pte.date::date
-                ORDER BY pte.date, id
-                RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
-            )
-        ) AS t
-        WHERE t.id = t.last_id
-    ), last_estimation_every_date AS (
-        SELECT pt.id AS task_id,
-               ed.date,
-               COALESCE_AGG(leod.planned_hours) OVER (
-                   PARTITION BY pt.id
-                   ORDER BY ed.date) AS planned_hours
-        FROM       project_task AS pt
-        CROSS JOIN every_day    AS ed
-        LEFT JOIN last_estimation_of_date AS leod
-               ON ed.date = leod.date AND pt.id = leod.task_id
-     )
-    SELECT
-           leed.task_id * 10000
-           + RANK() OVER (PARTITION BY leed.task_id ORDER BY leed.date) AS id,
-           leed.task_id,
-           leed.date,
-           leed.planned_hours
-    FROM last_estimation_every_date AS leed
+CREATE OR REPLACE VIEW %(table)s AS (
+    SELECT ('x'||substr(MD5(task_id::text || day::text), 1, 8))::bit(32)::bigint AS id,
+           ssp.task_id AS task_id,
+           day::date AS date,
+           te.planned_hours AS planned_hours
+    FROM       scrum_sprint_task AS ssp
+    INNER JOIN scrum_sprint AS sp ON sp.id = ssp.sprint_id
+    INNER JOIN ir_model_fields AS f ON f.name = 'planned_hours_latest' AND f.model = 'project.task'
+    CROSS JOIN GENERATE_SERIES(sp.date_begin, sp.date_end + 1, '1 DAY') AS day
+    LEFT JOIN LATERAL (
+        SELECT new_value_float AS planned_hours
+        FROM mail_message AS mm
+        INNER JOIN mail_tracking_value AS mtv ON mtv.mail_message_id = mm.id
+        WHERE model = 'project.task' AND field = f.id
+          AND mm.res_id = ssp.task_id AND mm.date::date <= day.date
+        ORDER BY mm.date DESC
+        LIMIT 1
+    ) AS te ON TRUE
 );
 """
             % {"table": self._table}

@@ -5,24 +5,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2026-09-28 07:15+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
-"Content-Transfer-Encoding: 8bit\n"
-
-#~ # Translation of Odoo Server.
-#~ # This file contains the translation of the following modules:
-#~ # 	* project_scrum
-#~ #
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: Odoo Server 16.0\n"
-#~ "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 21:03+0000\n"
-"PO-Revision-Date: 2026-08-31 23:12+0200\n"
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-26 16:25+0000\n"
+"PO-Revision-Date: 2026-09-28 07:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -300,7 +286,6 @@ msgstr "Crea sprints para gestionar tus tareas"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__create_uid
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__create_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__create_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__create_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__create_uid
@@ -311,7 +296,6 @@ msgstr "Creado por"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__create_date
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__create_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__create_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__create_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__create_date
@@ -345,7 +329,6 @@ msgid "Daily Estimations"
 msgstr "Estimaciones diarias"
 
 #. module: project_scrum
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__date
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__date
@@ -431,7 +414,7 @@ msgstr "Dedicación del desarrollador al sprint"
 #. module: project_scrum
 #: model:ir.model,name:project_scrum.model_scrum_sprint_developer_dedication_daily
 msgid "Developer's dedication to sprint (daily)"
-msgstr "Dedicación del desarrollador al sprint (diaria)"
+msgstr ""
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__developer_ids
@@ -447,7 +430,6 @@ msgstr "Descartar"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__display_name
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__display_name
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__display_name
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__display_name
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__display_name
@@ -524,8 +506,6 @@ msgid "Estimated velocity"
 msgstr "Velocidad estimada"
 
 #. module: project_scrum
-#: model:ir.model.fields,field_description:project_scrum.field_project_task__estimation_ids
-#: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__estimation_ids
 #: model_terms:ir.ui.view,arch_db:project_scrum.scrum_sprint_view_form
 #: model_terms:ir.ui.view,arch_db:project_scrum.view_scrum_sprint_task_tree
 msgid "Estimation"
@@ -602,7 +582,6 @@ msgstr "Horas dedicadas"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__id
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__id
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__id
@@ -700,7 +679,6 @@ msgstr "Explicación del kanban válido"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard____last_update
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint____last_update
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown____last_update
@@ -718,7 +696,6 @@ msgstr "Última actualización de la etapa"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__write_uid
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_uid
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__write_uid
@@ -729,7 +706,6 @@ msgstr "Última actualización por"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__write_date
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__write_date
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__write_date
@@ -737,11 +713,6 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
-
-#. module: project_scrum
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__mail_message_id
-msgid "Mail Message"
-msgstr "Mensaje"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__message_main_attachment_id
@@ -963,7 +934,6 @@ msgid "Phone"
 msgstr "Teléfono"
 
 #. module: project_scrum
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__planned_hours
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__planned_hours
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_burndown__planned_hours
 #: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__planned_hours
@@ -1362,7 +1332,6 @@ msgstr "Etiquetas"
 #: model:ir.model.fields,field_description:project_scrum.field_add_to_scrum_sprint_wizard__task_ids
 #: model:ir.model.fields,field_description:project_scrum.field_mail_mail__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_mail_message__task_id
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation_daily__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__task_id
 #: model:ir.model.fields,field_description:project_scrum.field_task_estimation_update_wizard__task_id
@@ -1393,15 +1362,6 @@ msgid ""
 msgstr ""
 "Estimación de tareas expandida a cada día.\n"
 "Registra el número de horas esperadas para finalizar una tarea en una fecha determinada o, en caso de que en la fecha en cuestión no se actualizase la estimación, la última estimación registrada. Se trata de un modelo intermedio que no se muestra por defecto porque no es más que un herramienta para construir el gráfico de burndow."
-
-#. module: project_scrum
-#: model:ir.model,name:project_scrum.model_project_task_estimation
-msgid ""
-"Task Estimation.\n"
-"Holds the expected hours to finalization for a task at a specifict date"
-msgstr ""
-"Estimación de la tarea.\n"
-"Registra el número de horas esperadas para finalizar una tarea en una fecha determinada"
 
 #. module: project_scrum
 #. odoo-python
@@ -1521,17 +1481,11 @@ msgid "Update task %(task_name)s estimation"
 msgstr "Actualizar la estimación de la tarea %(task_name)s"
 
 #. module: project_scrum
-#: model:ir.model.fields,field_description:project_scrum.field_project_task_estimation__user_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication__user_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_developer_dedication_daily__user_id
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint_task__user_id
 msgid "User"
 msgstr "Usuario"
-
-#. module: project_scrum
-#: model:ir.model.fields,help:project_scrum.field_project_task_estimation__user_id
-msgid "User who made this estimation"
-msgstr "Usuario que hizo esta estimación"
 
 #. module: project_scrum
 #: model:ir.model.fields,field_description:project_scrum.field_scrum_sprint__velocity_estimated

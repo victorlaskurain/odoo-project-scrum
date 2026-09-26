@@ -6,7 +6,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
     "category": "Services/Project",
-    "version": "16.0.1.1.0",
+    "version": "16.0.2.0.0",
     # any module necessary for this one to work correctly
     "depends": [
         "base",

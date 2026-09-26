@@ -7,7 +7,6 @@ from odoo import models, fields, api, _
 class Task(models.Model):
     _inherit = "project.task"
 
-    estimation_ids = fields.One2many("project.task.estimation", "task_id")
     planned_hours_latest = fields.Float(
         "Current estimation",
         tracking=True,
