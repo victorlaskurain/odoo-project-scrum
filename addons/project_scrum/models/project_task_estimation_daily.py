@@ -33,7 +33,9 @@ CREATE OR REPLACE VIEW %(table)s AS (
     SELECT ('x'||substr(MD5(task_id::text || day::text), 1, 8))::bit(32)::bigint AS id,
            ssp.task_id AS task_id,
            day::date AS date,
-           te.planned_hours AS planned_hours
+           te.planned_hours AS planned_hours,
+            -- esta columna no está en el modelo, se usa en la vista de burndown
+           ssp.sprint_id AS sprint_id
     FROM       scrum_sprint_task AS ssp
     INNER JOIN scrum_sprint AS sp ON sp.id = ssp.sprint_id
     INNER JOIN ir_model_fields AS f ON f.name = 'planned_hours_latest' AND f.model = 'project.task'

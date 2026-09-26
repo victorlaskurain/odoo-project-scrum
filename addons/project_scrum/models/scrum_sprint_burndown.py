@@ -18,8 +18,7 @@ class ScrumSprintBurndown(models.Model):
     def init(self):
         self.env.cr.execute(
             """
-DROP VIEW IF EXISTS scrum_sprint_burndown;
-CREATE VIEW scrum_sprint_burndown AS (
+CREATE OR REPLACE VIEW scrum_sprint_burndown AS (
     WITH sprint_reference AS (
         SELECT sprint_id,
                date::date,
@@ -30,10 +29,8 @@ CREATE VIEW scrum_sprint_burndown AS (
         SELECT sprint_id,
                date::date,
                SUM(planned_hours) AS hours
-        FROM       scrum_sprint_task AS sst
-        INNER JOIN project_task_estimation_daily AS pted
-                ON sst.task_id = pted.task_id
-        GROUP BY sst.sprint_id, pted.date::date
+        FROM       project_task_estimation_daily AS pted
+        GROUP BY pted.sprint_id, pted.date::date
     )
     SELECT reference.sprint_id * 10000
            + RANK() OVER (PARTITION BY reference.sprint_id ORDER BY reference.date) AS id,
