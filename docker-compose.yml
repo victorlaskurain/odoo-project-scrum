@@ -25,8 +25,8 @@ services:
     ports:
       - 5432:5432
   odoo:
-    image: odoo:dev-16.0
-    build: .
+    image: odoo:dev-20.0
+    build: build
     command: /opt/src/submodules/ocb/odoo-bin -c /etc/odoo/odoo.conf
     logging: *default-logging
     restart: "no"
@@ -50,16 +50,16 @@ services:
       && nginx -g 'daemon off;'"
     environment:
       SERVER_NAME: localhost
-      HTTP_PORT: 8016
+      HTTP_PORT: 8020
     volumes:
       - ./nginx_odoo_proxy.conf.tpl:/etc/nginx/conf.d/nginx_odoo_proxy.conf.tpl
     ports:
-      - 8016:80
+      - 8020:80
     depends_on:
       - odoo
 
   util:
-    image: odoo:dev-16.0
+    image: odoo:dev-20.0
     build: .
     logging: *default-logging
     command: "true"

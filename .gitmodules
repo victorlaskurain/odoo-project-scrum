@@ -1,8 +1,4 @@
 [submodule "submodules/ocb"]
 	path = submodules/ocb
 	url = https://github.com/OCA/OCB.git
-	branch = 16.0
-[submodule "submodules/spreadsheet"]
-	path = submodules/spreadsheet
-	url = https://github.com/OCA/spreadsheet.git
-	branch = 16.0
+	branch = 20.0
