@@ -7,6 +7,8 @@ from odoo.exceptions import UserError
 from .res_config_settings import EARLIEST_DATE_DEFAULT, LATEST_DATE_DEFAULT
 
 
+# :TODO: MIGRAR LA VISTA resource_daily_attendance A LA V20 USANDO
+# COMO REFERENCIA _get_attendances_by_date DE resource.calendar
 class ResourceDailyAvailability(models.Model):
     _name = "resource.daily.availability"
     _order = "calendar_id, date DESC"
@@ -25,15 +27,9 @@ class ResourceDailyAvailability(models.Model):
     def init(self):
         self.env.cr.execute(
             """
-DROP FUNCTION IF EXISTS RESOURCE_DAILY_GET_ODOO_WEEK_TYPE(day DATE) CASCADE;
-CREATE FUNCTION RESOURCE_DAILY_GET_ODOO_WEEK_TYPE(day DATE) RETURNS VARCHAR AS
-$$
-SELECT CAST(CAST(FLOOR((day - '0001-01-01'::date) / 7) AS INTEGER) %% 2 AS VARCHAR);
-$$ LANGUAGE SQL IMMUTABLE;
-
 -- this view needs to be refreshed when the series boundaries change. Holds a record
 -- for each calendar day supported in the following queries.
-DROP MATERIALIZED VIEW IF EXISTS resource_daily_every_day;
+DROP MATERIALIZED VIEW IF EXISTS resource_daily_every_day CASCADE;
 CREATE MATERIALIZED VIEW resource_daily_every_day AS (
     -- dates is a virtual table that either holds the earliest and
     -- latest values set in the configuration or the default values.
@@ -94,28 +90,20 @@ CREATE VIEW resource_daily_attendance AS (
                        ed.date + MAKE_INTERVAL(
                            MINS => CAST(rca.hour_from * 60 AS INTEGER)
                        )
-                   ) AT TIME ZONE rc.tz AT TIME ZONE 'UTC',
+                   ),
                    (
                        ed.date + MAKE_INTERVAL(
                            MINS => CAST(rca.hour_to * 60 AS INTEGER)
                        )
-                   ) AT TIME ZONE rc.tz AT TIME ZONE 'UTC'
+                   )
                )
            ) AS attendance_range
     FROM       resource_daily_every_day AS ed
     CROSS JOIN resource_calendar AS rc
     LEFT  JOIN resource_calendar_attendance AS rca
             ON rca.calendar_id = rc.id  AND ed.day_of_week = rca.dayofweek
-               AND CASE rc.two_weeks_calendar
-                       WHEN TRUE THEN
-                           ed.day_of_week = rca.dayofweek
-                           AND RESOURCE_DAILY_GET_ODOO_WEEK_TYPE(ed.date) = rca.week_type
-                       ELSE
-                           TRUE
-                   END
-               AND (rca.date_from IS NULL OR rca.date_from < ed.date)
-               AND (rca.date_to   IS NULL OR ed.date       < rca.date_to)
-    WHERE rca.display_type IS NULL
+               AND (rca.date             IS NULL OR rca.date < ed.date)
+               AND (rca.recurrency_until IS NULL OR ed.date  < rca.recurrency_until)
     GROUP BY rc.id, ed.date
 );
 

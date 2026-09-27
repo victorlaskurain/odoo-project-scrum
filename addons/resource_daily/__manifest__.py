@@ -6,12 +6,12 @@
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
     "category": "Hidden",
-    "version": "16.0.1.0.0",
+    "version": "20.0.1.0.0",
     # any module necessary for this one to work correctly
     "depends": ["resource", "base_setup"],
     # always loaded
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/resource_daily_availability.xml",
         "views/res_config_settings_views.xml",
     ],

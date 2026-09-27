@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <search string="Search Sprint">
                 <field name="date"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Calendar"
                             name="group_by_calendar"
                             context="{'group_by': 'calendar_id'}"/>
@@ -37,7 +37,7 @@
         <field name="name">resource.daily.availability.view.tree</field>
         <field name="model">resource.daily.availability</field>
         <field name="arch" type="xml">
-            <tree string="Resource Daily Availability" default_order="calendar_id, date DESC">
+            <list string="Resource Daily Availability" default_order="calendar_id, date DESC">
                 <field name="calendar_id"/>
                 <field name="date"/>
                 <field name="resource_id"/>
@@ -45,7 +45,7 @@
                 <field name="leave_range"/>
                 <field name="availability_range"/>
                 <field name="availability_hours"/>
-            </tree>
+            </list>
         </field>
     </record>
 

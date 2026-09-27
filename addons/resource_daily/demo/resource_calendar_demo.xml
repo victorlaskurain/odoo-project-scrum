@@ -3,27 +3,27 @@
 
     <record id="resource_calendar_2_week_35h_demo" model="resource.calendar">
         <field name="name">2 week 35 hours/week</field>
+        <field name="calendar_type">variable</field>
         <field name="company_id" ref="base.main_company"/>
-        <field name="two_weeks_calendar" eval="True"/>
         <field name="hours_per_day">7.0</field>
         <field name="attendance_ids"
             eval="[(5, 0, 0),
-                (0, 0, {'name': 'Monday Morning', 'dayofweek': '0', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'week_type': '0'}),
-                (0, 0, {'name': 'Monday Afternoon', 'dayofweek': '0', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'week_type': '0'}),
-                (0, 0, {'name': 'Tuesday Morning', 'dayofweek': '1', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'week_type': '0'}),
-                (0, 0, {'name': 'Tuesday Afternoon', 'dayofweek': '1', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'week_type': '0'}),
-                (0, 0, {'name': 'Wednesday Morning', 'dayofweek': '2', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'week_type': '0'}),
-                (0, 0, {'name': 'Wednesday Afternoon', 'dayofweek': '2', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'week_type': '0'}),
-                (0, 0, {'name': 'Thursday Morning', 'dayofweek': '3', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'week_type': '0'}),
-                (0, 0, {'name': 'Thursday Afternoon', 'dayofweek': '3', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'week_type': '0'}),
-                (0, 0, {'name': 'Friday Morning', 'dayofweek': '4', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'week_type': '0'}),
-                (0, 0, {'name': 'Friday Afternoon', 'dayofweek': '4', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'week_type': '0'}),
+                (0, 0, {'dayofweek': '0', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-06'}),
+                (0, 0, {'dayofweek': '0', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-06'}),
+                (0, 0, {'dayofweek': '1', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-07'}),
+                (0, 0, {'dayofweek': '1', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-07'}),
+                (0, 0, {'dayofweek': '2', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-08'}),
+                (0, 0, {'dayofweek': '2', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-08'}),
+                (0, 0, {'dayofweek': '3', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-09'}),
+                (0, 0, {'dayofweek': '3', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-09'}),
+                (0, 0, {'dayofweek': '4', 'hour_from': 8, 'hour_to': 12, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-10'}),
+                (0, 0, {'dayofweek': '4', 'hour_from': 13, 'hour_to': 16, 'day_period': 'afternoon', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-10'}),
 
-                (0, 0, {'name': 'Monday Morning', 'dayofweek': '0', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'week_type': '1'}),
-                (0, 0, {'name': 'Tuesday Morning', 'dayofweek': '1', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'week_type': '1'}),
-                (0, 0, {'name': 'Wednesday Morning', 'dayofweek': '2', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'week_type': '1'}),
-                (0, 0, {'name': 'Thursday Morning', 'dayofweek': '3', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'week_type': '1'}),
-                (0, 0, {'name': 'Friday Morning', 'dayofweek': '4', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'week_type': '1'}),
+                (0, 0, {'dayofweek': '0', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-13'}),
+                (0, 0, {'dayofweek': '1', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-14'}),
+                (0, 0, {'dayofweek': '2', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-15'}),
+                (0, 0, {'dayofweek': '3', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-16'}),
+                (0, 0, {'dayofweek': '4', 'hour_from': 8, 'hour_to': 15, 'day_period': 'morning', 'recurrency': True, 'recurrency_type': 'weeks', 'recurrency_interval': 2, 'date': '2020-01-17'}),
             ]"
         />
     </record>
