@@ -69,12 +69,13 @@ class Message(models.Model):
     def _message_format(self, fnames, format_reply=True, legacy=False):
         sprint_id = self.env.context.get("sprint_id")
         res = super()._message_format(fnames, format_reply, legacy)
-        for item in res:
-            item["sprint_id"] = sprint_id
-            item["task"] = (
-                {"id": item["task_id"][0], "name": item["task_id"][1]}
-                if item["task_id"]
-                else "clear"
-            )
-            del item["task_id"]
+        if sprint_id:
+            for item in res:
+                item["sprint_id"] = sprint_id
+                item["task"] = (
+                    {"id": item["task_id"][0], "name": item["task_id"][1]}
+                    if item["task_id"]
+                    else "clear"
+                )
+                del item["task_id"]
         return res
