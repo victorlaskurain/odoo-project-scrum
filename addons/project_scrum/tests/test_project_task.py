@@ -85,7 +85,7 @@ class TestProjectTask(TransactionCase):
 
         self.assertEqual(action["type"], "ir.actions.act_window")
         self.assertEqual(action["res_model"], "scrum.sprint")
-        self.assertEqual(action["view_mode"], "kanban,tree,form")
+        self.assertEqual(action["view_mode"], "kanban,list,form")
         self.assertNotIn("res_id", action)
         self.assertEqual(action["domain"][0][0], "id")
         self.assertEqual(action["domain"][0][1], "in")

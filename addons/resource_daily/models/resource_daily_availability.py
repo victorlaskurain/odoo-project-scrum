@@ -7,12 +7,13 @@ from odoo.exceptions import UserError
 from .res_config_settings import EARLIEST_DATE_DEFAULT, LATEST_DATE_DEFAULT
 
 
-# :TODO: MIGRAR LA VISTA resource_daily_attendance A LA V20 USANDO
-# COMO REFERENCIA _get_attendances_by_date DE resource.calendar
 class ResourceDailyAvailability(models.Model):
+    """Resource availability expanded to every day.
+
+    :WARNING: current implementation supports only fixed calendars
+    """
     _name = "resource.daily.availability"
     _order = "calendar_id, date DESC"
-    _description = "Resource availability expanded to every day."
     _auto = False
     _log_access = False
 
@@ -53,6 +54,32 @@ CREATE MATERIALIZED VIEW resource_daily_every_day AS (
 );
 CREATE UNIQUE INDEX resource_daily_every_day_unique_idx ON resource_daily_every_day (date);
 
+DROP FUNCTION IF EXISTS RESOURCE_DAILY_TS_RANGE_FROM_ATTENDANCE CASCADE;
+CREATE FUNCTION RESOURCE_DAILY_TS_RANGE_FROM_ATTENDANCE(
+    date DATE,
+    hour_from DOUBLE PRECISION,
+    hour_to   DOUBLE PRECISION,
+    duration  DOUBLE PRECISION
+) RETURNS TSRANGE AS
+$$
+    SELECT CASE
+        WHEN date IS NULL OR (hour_from + hour_to + duration) IS NULL THEN
+            TSRANGE('2000-01-01', '2000-01-01') -- empty range
+        WHEN COALESCE(hour_from, 0) = 0 AND COALESCE(hour_to, 0) = 0 THEN
+            TSRANGE(
+                date + MAKE_INTERVAL(HOURS => 8),
+                date + MAKE_INTERVAL(MINS => ((8.0 + duration) * 60.0)::INTEGER)
+            )
+        ELSE
+            -- TSRANGE(date + MAKE_INTERVAL(HOURS => 8), date + MAKE_INTERVAL(HOURS => 16))
+            TSRANGE(
+                date + MAKE_INTERVAL(MINS => (hour_from * 60.0)::INTEGER),
+                date + MAKE_INTERVAL(MINS => (hour_to * 60.0)::INTEGER)
+            )
+    END;
+    -- SELECT TSRANGE(date + MAKE_INTERVAL(HOURS => 8), date + MAKE_INTERVAL(HOURS => 16));
+$$ LANGUAGE SQL IMMUTABLE;
+
 DROP FUNCTION IF EXISTS RESOURCE_DAILY_TSRANGE CASCADE;
 CREATE FUNCTION RESOURCE_DAILY_TSRANGE(
     a TIMESTAMP WITHOUT TIME ZONE,
@@ -85,18 +112,11 @@ CREATE VIEW resource_daily_attendance AS (
            rc.id AS calendar_id,
            ed.date AS date,
            RANGE_AGG(
-               RESOURCE_DAILY_TSRANGE(
-                   (
-                       ed.date + MAKE_INTERVAL(
-                           MINS => CAST(rca.hour_from * 60 AS INTEGER)
-                       )
-                   ),
-                   (
-                       ed.date + MAKE_INTERVAL(
-                           MINS => CAST(rca.hour_to * 60 AS INTEGER)
-                       )
-                   )
-               )
+               RESOURCE_DAILY_TS_RANGE_FROM_ATTENDANCE(
+                   ed.date,
+                   rca.hour_from,
+                   rca.hour_to,
+                   rca.duration_hours)
            ) AS attendance_range
     FROM       resource_daily_every_day AS ed
     CROSS JOIN resource_calendar AS rc

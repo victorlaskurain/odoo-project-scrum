@@ -6,20 +6,20 @@
     "license": "AGPL-3",
     "website": "https://github.com/victorlaskurain",
     "category": "Services/Project",
-    "version": "16.0.2.0.0",
+    "version": "20.0.1.0.0",
     # any module necessary for this one to work correctly
     "depends": [
         "base",
         "project",
         "hr_timesheet",
         "line_chart_widget",
-        "mail",
+        "mail_tracking",
         "resource_daily",
     ],
     # always loaded
     "data": [
         "security/project_scrum_security.xml",
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "data/ir_sequence_data.xml",
         "views/scrum_sprint_views.xml",
         "views/project_task_views.xml",

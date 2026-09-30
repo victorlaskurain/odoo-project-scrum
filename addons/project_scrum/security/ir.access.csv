@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,operation,domain
+access_project_task_estimation_daily_project_user,project.task.estimation by project_daily user,model_project_task_estimation_daily,project.group_project_user,r,
+access_scrum_group_sprint_developer_dedication_daily_scrum_master,scrum.sprint.developer.dedication.daily by scrum master,model_scrum_sprint_developer_dedication_daily,project_scrum.group_scrum_master,crud,
+access_scrum_group_sprint_developer_dedication_scrum_master,scrum.sprint.developer.dedication by scrum master,model_scrum_sprint_developer_dedication,project_scrum.group_scrum_master,crud,
+access_scrum_group_sprint_task_scrum_master,scrum.sprint.task by scrum master,model_scrum_sprint_task,project_scrum.group_scrum_master,crud,
+access_scrum_group_sprint_scrum_master,scrum.sprint by scrum master,model_scrum_sprint,project_scrum.group_scrum_master,crud,
+access_scrum_sprint_developer_dedication_daily_project_user,scrum.sprint.developer.dedication.daily by project user,model_scrum_sprint_developer_dedication_daily,project.group_project_user,r,
+access_scrum_sprint_developer_dedication_project_user,scrum.sprint.developer.dedication by project user,model_scrum_sprint_developer_dedication,project.group_project_user,r,
+access_scrum_sprint_task_project_user,scrum.sprint.task by project user,model_scrum_sprint_task,project.group_project_user,ru,
+access_scrum_sprint_project_user,scrum.sprint by project user,model_scrum_sprint,project.group_project_user,r,
+access_project_task,project.task,model_task_estimation_update_wizard,project.group_project_user,crud,
+access_task_on_partner,project.task on partners,model_task_estimation_update_wizard,base.group_user,r,
+access_scrum_sprint_burndown,Scrum.sprint.burndown by project user,model_scrum_sprint_burndown,project.group_project_user,r,
+access_add_to_scrum_sprint_wizard,access_add_to_scrum_sprint_wizard,project_scrum.model_add_to_scrum_sprint_wizard,base.group_user,cru,
+access_scrum_sprint_comp_rule,Sprint: multi-company,model_scrum_sprint,,crud,"[('company_id', 'in', company_ids + [False])]"

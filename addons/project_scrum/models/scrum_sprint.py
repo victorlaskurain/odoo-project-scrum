@@ -112,7 +112,7 @@ class SprintTask(models.Model):
         return self.task_id.sequence
 
     # show a column for each user assigned to the sprint
-    def _group_expand_user_id(self, users, domain, order):
+    def _group_expand_user_id(self, users, domain):
         sprint_id = False
         if self.env.context.get("active_model") == "scrum.sprint":
             sprint_id = self.env.context.get("active_id")
@@ -146,7 +146,7 @@ class Sprint(models.Model):
 
     _name = "scrum.sprint"
     _description = "Scrum Sprint"
-    _inherit = ["mail.thread.cc", "mail.activity.mixin"]
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     _sql_constraints = [
         (
@@ -323,7 +323,7 @@ WHERE NOT ss.active
             "res_model": "scrum.sprint.task",
             "domain": [("sprint_id", "=", self.id)],
             "context": {"default_sprint_id": self.id},
-            "view_mode": "kanban,tree",
+            "view_mode": "kanban,list",
         }
 
     def action_generate_next_sprint(self):

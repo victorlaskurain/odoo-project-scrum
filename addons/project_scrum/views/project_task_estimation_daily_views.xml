@@ -11,7 +11,7 @@
                 <search string="Search Daily Estimation">
                     <field name="task_id" string="Task"/>
                     <field name="date" string="Date"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Task" name="group_by_task" context="{'group_by': 'task_id'}"/>
                         <filter string="Date" name="group_by_date" context="{'group_by': 'date:day'}"/>
                     </group>
@@ -24,11 +24,11 @@
             <field name="name">project.task.estimation.daily.view.tree</field>
             <field name="model">project.task.estimation.daily</field>
             <field name="arch" type="xml">
-                <tree string="Daily Estimations" default_order="date DESC">
+                <list string="Daily Estimations" default_order="date DESC">
                     <field name="task_id"/>
                     <field name="date"/>
                     <field name="planned_hours"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -50,7 +50,7 @@
             <field name="domain">[]</field>
             <field name="view_id" ref="project_task_estimation_daily_view_tree"/>
             <field name="search_view_id" ref="project_task_estimation_daily_view_filter"/>
-            <field name="view_mode">tree,graph</field>
+            <field name="view_mode">list,graph</field>
             <field name="context">{'search_default_group_by_date': 1}</field>
             <field name="target">main</field>
             <field name="help" type="html">

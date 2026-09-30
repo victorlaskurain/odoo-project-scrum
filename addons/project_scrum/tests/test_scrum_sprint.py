@@ -24,14 +24,14 @@ class TestScrumSprint(TransactionCase):
             {
                 "name": "Unfinished task",
                 "project_id": self.project.id,
-                "planned_hours": 5,
+                "allocated_hours": 5,
             }
         )
         finished_task = Task.create(
             {
                 "name": "Finished task",
                 "project_id": self.project.id,
-                "planned_hours": 0,
+                "allocated_hours": 0,
             }
         )
         sprint = Sprint.create(

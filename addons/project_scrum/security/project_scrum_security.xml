@@ -7,18 +7,12 @@
     <record id="group_scrum_master" model="res.groups">
         <field name="name">Scrum Master</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="base.module_category_services_project"/>
-        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <field name="privilege_id" ref="project.res_groups_privilege_project"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
     </record>
 
     <record id="project.group_project_manager" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('project_scrum.group_scrum_master'))]"/>
-    </record>
-
-    <record model="ir.rule" id="scrum_sprint_rule_company">
-        <field name="name">Sprint: multi-company</field>
-        <field name="model_id" ref="model_scrum_sprint"/>
-        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
 </odoo>

@@ -3,6 +3,7 @@
 
 from odoo import api, models, fields
 
+
 class ScrumSprintBurndown(models.Model):
     _name = "scrum.sprint.burndown"
     _description = "Sprint Burndown Chart Data"
@@ -71,7 +72,7 @@ CREATE OR REPLACE VIEW scrum_sprint_burndown AS (
             fields_sorted = fields.copy()
             fields_sorted.sort()
             assert fields_sorted == ["available_hours", "date", "planned_hours"]
-        except AssertionError: # no estamos en el caso especial
+        except AssertionError:  # no estamos en el caso especial
             res = super().search_read(
                 domain, fields, offset, limit, order, **read_kwargs
             )

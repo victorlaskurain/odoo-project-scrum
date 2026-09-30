@@ -44,7 +44,7 @@ CREATE OR REPLACE VIEW %(table)s AS (
         SELECT new_value_float AS planned_hours
         FROM mail_message AS mm
         INNER JOIN mail_tracking_value AS mtv ON mtv.mail_message_id = mm.id
-        WHERE model = 'project.task' AND field = f.id
+        WHERE model = 'project.task' AND mtv.field_id = f.id
           AND mm.res_id = ssp.task_id AND mm.date::date <= day.date
         ORDER BY mm.date DESC
         LIMIT 1

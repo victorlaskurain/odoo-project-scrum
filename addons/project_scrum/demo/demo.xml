@@ -8,7 +8,7 @@
             <field name="name">Alice (Scrum Project User and Master)</field>
             <field name="login">alice</field>
             <field name="password">alice</field>
-            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user'), ref('project_scrum.group_scrum_master')])]"/>
+            <field name="group_ids" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user'), ref('project_scrum.group_scrum_master')])]"/>
         </record>
         <function model="res.users"
                   name="action_create_employee">
@@ -23,7 +23,7 @@
             <field name="name">Bob (Scrum Project User)</field>
             <field name="login">bob</field>
             <field name="password">bob</field>
-            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+            <field name="group_ids" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
         </record>
         <function model="res.users"
                   name="action_create_employee">
@@ -38,7 +38,7 @@
             <field name="name">Carl (Scrum Project User)</field>
             <field name="login">carl</field>
             <field name="password">carl</field>
-            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+            <field name="group_ids" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
         </record>
         <function model="res.users"
                   name="action_create_employee">
@@ -53,7 +53,7 @@
             <field name="name">Dan (Scrum Project User)</field>
             <field name="login">dan</field>
             <field name="password">dan</field>
-            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+            <field name="group_ids" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
         </record>
         <function model="res.users"
                   name="action_create_employee">
@@ -68,7 +68,7 @@
             <field name="name">Ethan (Scrum Project User)</field>
             <field name="login">ethan</field>
             <field name="password">ethan</field>
-            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
+            <field name="group_ids" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'), ref('project.group_project_user')])]"/>
         </record>
         <function model="res.users"
                   name="action_create_employee">
@@ -127,7 +127,7 @@
         </record>
 
         <record id="project_1_task_1" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -155,7 +155,7 @@
         </function>
 
         <record id="project_1_task_2" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -183,7 +183,7 @@
         </function>
 
         <record id="project_1_task_3" model="project.task">
-            <field name="planned_hours" eval="1"/>
+            <field name="allocated_hours" eval="1"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -211,7 +211,7 @@
         </function>
 
         <record id="project_1_task_4" model="project.task">
-            <field name="planned_hours" eval="2"/>
+            <field name="allocated_hours" eval="2"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -239,7 +239,7 @@
         </function>
 
         <record id="project_1_task_5" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_dan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -267,7 +267,7 @@
         </function>
 
         <record id="project_1_task_6" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -295,7 +295,7 @@
         </function>
 
         <record id="project_1_task_7" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -323,7 +323,7 @@
         </function>
 
         <record id="project_1_task_8" model="project.task">
-            <field name="planned_hours" eval="2"/>
+            <field name="allocated_hours" eval="2"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -351,7 +351,7 @@
         </function>
 
         <record id="project_1_task_9" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -379,7 +379,7 @@
         </function>
 
         <record id="project_1_task_10" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -407,7 +407,7 @@
         </function>
 
         <record id="project_1_task_11" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_1"/>
@@ -435,7 +435,7 @@
         </function>
 
         <record id="project_2_task_1" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -463,7 +463,7 @@
         </function>
 
         <record id="project_2_task_2" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -491,7 +491,7 @@
         </function>
 
         <record id="project_2_task_3" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -519,7 +519,7 @@
         </function>
 
         <record id="project_2_task_4" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -547,7 +547,7 @@
         </function>
 
         <record id="project_2_task_5" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -575,7 +575,7 @@
         </function>
 
         <record id="project_2_task_6" model="project.task">
-            <field name="planned_hours" eval="32"/>
+            <field name="allocated_hours" eval="32"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -603,7 +603,7 @@
         </function>
 
         <record id="project_2_task_7" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -631,7 +631,7 @@
         </function>
 
         <record id="project_2_task_8" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -659,7 +659,7 @@
         </function>
 
         <record id="project_2_task_9" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -687,7 +687,7 @@
         </function>
 
         <record id="project_2_task_10" model="project.task">
-            <field name="planned_hours" eval="8"/>
+            <field name="allocated_hours" eval="8"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -715,7 +715,7 @@
         </function>
 
         <record id="project_2_task_11" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -743,7 +743,7 @@
         </function>
 
         <record id="project_2_task_12" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_2"/>
@@ -771,7 +771,7 @@
         </function>
 
         <record id="project_3_task_1" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -799,7 +799,7 @@
         </function>
 
         <record id="project_3_task_2" model="project.task">
-            <field name="planned_hours" eval="2"/>
+            <field name="allocated_hours" eval="2"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -827,7 +827,7 @@
         </function>
 
         <record id="project_3_task_3" model="project.task">
-            <field name="planned_hours" eval="13"/>
+            <field name="allocated_hours" eval="13"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_carl'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -855,7 +855,7 @@
         </function>
 
         <record id="project_3_task_4" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_dan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -883,7 +883,7 @@
         </function>
 
         <record id="project_3_task_5" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_ethan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -911,7 +911,7 @@
         </function>
 
         <record id="project_3_task_6" model="project.task">
-            <field name="planned_hours" eval="6"/>
+            <field name="allocated_hours" eval="6"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -939,7 +939,7 @@
         </function>
 
         <record id="project_3_task_7" model="project.task">
-            <field name="planned_hours" eval="4"/>
+            <field name="allocated_hours" eval="4"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_dan'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -967,7 +967,7 @@
         </function>
 
         <record id="project_3_task_8" model="project.task">
-            <field name="planned_hours" eval="21"/>
+            <field name="allocated_hours" eval="21"/>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice'))]"/>
             <field name="priority">1</field>
             <field name="project_id" ref="project_3"/>
@@ -1017,7 +1017,7 @@
         <record id="task_01" model="project.task">
             <field name="sequence">10</field>
             <field name="user_ids" eval="[Command.link(ref('base.user_demo'))]"/>
-            <field name="planned_hours">50.0</field>
+            <field name="allocated_hours">50.0</field>
             <field name="project_id" ref="project.project_project_1"/>
             <field name="name">Scrum Proof of Concept for Office Design</field>
             <field name="create_date" eval="DateTime(year=2024, month=7, day=31) - relativedelta(days=20)"/>
@@ -1026,7 +1026,7 @@
         <record id="task_02" model="project.task">
             <field name="sequence">20</field>
             <field name="user_ids" eval="[Command.link(ref('base.user_demo', 'project_scrum.user_sprintdev_alice'))]"/>
-            <field name="planned_hours">75.0</field>
+            <field name="allocated_hours">75.0</field>
             <field name="project_id" ref="project.project_project_2"/>
             <field name="name">System setup  for R&amp;D</field>
             <field name="create_date" eval="DateTime(year=2024, month=7, day=31) - relativedelta(days=16)"/>
@@ -1035,7 +1035,7 @@
         <record id="task_03" model="project.task">
             <field name="sequence">30</field>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_alice', 'project_scrum.user_sprintdev_bob'))]"/>
-            <field name="planned_hours">85.0</field>
+            <field name="allocated_hours">85.0</field>
             <field name="project_id" ref="project.project_project_2"/>
             <field name="name">UI Design for Office Design</field>
             <field name="create_date" eval="DateTime(year=2024, month=7, day=31) - relativedelta(days=17)"/>
@@ -1044,7 +1044,7 @@
         <record id="task_04" model="project.task">
             <field name="sequence">30</field>
             <field name="user_ids" eval="[Command.link(ref('project_scrum.user_sprintdev_bob'))]"/>
-            <field name="planned_hours">85.0</field>
+            <field name="allocated_hours">85.0</field>
             <field name="project_id" ref="project.project_project_2"/>
             <field name="name">Testing for R&amp;D </field>
             <field name="create_date" eval="DateTime(year=2024, month=7, day=31) - relativedelta(days=18)"/>

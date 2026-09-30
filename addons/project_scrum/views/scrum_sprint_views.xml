@@ -8,13 +8,13 @@
             <field name="name">scrum.sprint.view.tree</field>
             <field name="model">scrum.sprint</field>
             <field name="arch" type="xml">
-                <tree string="Sprints SCRUM" default_order="date_begin desc">
+                <list string="Sprints SCRUM" default_order="date_begin desc">
                     <field name="name"/>
                     <field name="date_begin"/>
                     <field name="date_end"/>
                     <field name="project_id"/>
                     <field name="scrum_master_user_id"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -36,7 +36,7 @@
                     <separator/>
                     <filter string="Today" name="today"
                         domain="[('date_begin', '&lt;', context_today().strftime('%Y-%m-%d')), ('date_end', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Scrum Master" name="manager" context="{'group_by': 'scrum_master_user_id'}"/>
                         <filter string="Project" name="group_by_project" context="{'group_by': 'project_id'}"/>
                         <filter string="Date" name="group_date" context="{'group_by': 'date_begin:month'}"/>
@@ -45,66 +45,71 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="view_sprint_kanban">
-            <field name="name">scrum.sprint.kanban</field>
+        <record model="ir.ui.view" id="view_sprint_card">
+            <field name="name">scrum.sprint.card</field>
             <field name="model">scrum.sprint</field>
             <field name="arch" type="xml">
-                <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors"
-                        sample="1"
-                        default_order="date_begin, date_end, name, id"
-                        >
+                <card>
                     <field name="sprint_task_count"/>
                     <templates>
-                        <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
-                                <div class="o_project_kanban_main ">
-                                    <div class="o_kanban_card_content mw-100">
-                                        <div class="o_kanban_primary_left">
-                                            <div class="o_primary">
-                                                <field name="name"/>
-                                                <field name="burndown_ids"
-                                                       style="width: 100%"
-                                                       widget="line_chart"
-                                                       options="{
-                                                           'chartOptions': {
-                                                               'legend': {
-                                                                   'display': False
-                                                               },
-                                                               'animation': False
-                                                           },
-                                                           'dataFields': ['date', 'planned_hours', 'available_hours'],
-                                                           'datasetOptions': {
-                                                               'date': {
-                                                                   'format': 'date'
-                                                               },
-                                                               'planned_hours': {
-                                                                   'borderColor': 'red'
-                                                               },
-                                                               'available_hours': {
-                                                                   'borderColor': 'blue'
-                                                               }
-                                                           }
-                                                       }"/>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <t t-name="card">
+                            <main class="o_scrum_sprint_kanban_main">
+                                <div class="mw-100">
+                                    <field name="name"/>
+                                    <field name="burndown_ids"
+                                           style="width: 100%"
+                                           widget="line_chart"
+                                           options="{
+                                               'chartOptions': {
+                                                   'plugins': {
+                                                       'legend': {
+                                                           'display': False
+                                                       }
+                                                   },
+                                                   'animation': False
+                                               },
+                                               'dataFields': ['date', 'planned_hours', 'available_hours'],
+                                               'datasetOptions': {
+                                                   'date': {
+                                                       'format': 'date'
+                                                   },
+                                                   'planned_hours': {
+                                                       'borderColor': 'red'
+                                                   },
+                                                   'available_hours': {
+                                                       'borderColor': 'blue'
+                                                   }
+                                               }
+                                           }"/>
                                 </div>
-                                <div class="o_kanban_record_bottom mt-3">
-                                    <div class="oe_kanban_bottom_left">
+                                <footer>
+                                    <div class="d-flex align-items-center">
                                         <div class="o_project_kanban_boxes d-flex align-items-baseline">
                                             <a class="o_project_kanban_box" name="action_show_tasks" type="object">
                                                 <div>
-                                                    <span class="o_value"><t t-esc="record.sprint_task_count.value"/></span>
+                                                    <field name="sprint_task_count"/>
                                                     <span class="o_label ms-1">Tasks</span>
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </footer>
+                            </main>
                         </t>
                     </templates>
-                </kanban>
+                </card>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sprint_kanban">
+            <field name="name">scrum.sprint.kanban</field>
+            <field name="model">scrum.sprint</field>
+            <field name="arch" type="xml">
+                <kanban class="o_project_kanban"
+                        sample="1"
+                        default_order="date_begin, date_end, name, id"
+                        card_id="%(project_scrum.view_sprint_card)d"
+                        />
             </field>
         </record>
 
@@ -127,14 +132,11 @@
                         <div class="oe_button_box" name="button_box" groups="base.group_user">
                             <button class="oe_stat_button"
                                     name="action_show_tasks"
-                                    type="object" icon="fa-tasks"
+                                    type="object" icon="check"
                                     groups="base.group_user">
                                 <div class="o_field_widget o_stat_info">
                                     <span class="o_stat_value">
-                                        <field name="sprint_task_count" nolabel="1"/>
-                                    </span>
-                                    <span class="o_stat_text">
-                                        Tasks
+                                        <field name="sprint_task_count" nolabel="1"/> Tasks
                                     </span>
                                 </div>
                             </button>
@@ -142,7 +144,7 @@
                         <widget name="web_ribbon"
                                 title="Archived"
                                 bg_color="bg-danger"
-                                attrs="{'invisible': [('active', '=', True)]}"/>
+                                invisible="active"/>
                         <div class="oe_title">
                             <h1 class="d-flex flex-row">
                                 <field name="name"
@@ -170,8 +172,10 @@
                                        widget="line_chart"
                                        options="{
                                            'chartOptions': {
-                                               'legend': {
-                                                   'display': False
+                                               'plugins': {
+                                                   'legend': {
+                                                       'display': False
+                                                   }
                                                },
                                                'animation': False
                                            },
@@ -189,53 +193,45 @@
                                            }
                                        }"/>
                                 <field name="burndown_ids">
-                                    <tree>
+                                    <list>
                                         <field name="date"/>
                                         <field name="planned_hours"/>
                                         <field name="available_hours"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                             <page name="tasks" string="Tasks">
                                 <div/>
                                 <field name="sprint_task_ids">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="sequence" widget="handle"/>  <!--:TODO: only editable by scrum master-->
                                         <field name="task_id"/> <!--:TODO: only editable by scrum master-->
                                         <field name="user_id"
                                                domain="[('id', 'in', parent.developer_ids)]"/>
-                                        <field name="planned_hours" string="Planned estimation"/>
-                                        <field name="planned_hours_latest"/>
-                                    </tree>
+                                        <field name="allocated_hours" string="Estimation"/>
+                                    </list>
                                 </field>
                             </page>
                             <page name="developers" string="Developers">
                                 <div/>
                                 <field name="developer_dedication_ids">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="user_id"/>
                                         <field name="dedication" widget="percentage"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"
-                               options="{'post_refresh':True}"
-                               help="Follow this sprint to automatically track the events associated to tasks and issues of this sprint."
-                               groups="base.group_user"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
-                    </div>
+                    <chatter reload_on_follower="True"/>
                 </form>
             </field>
         </record>
 
-        <record id="scrum_sprint_task_view_kanban" model="ir.ui.view">
-            <field name="name">scrum.sprint.task.kanban</field>
+        <record id="scrum_sprint_view_task_card" model="ir.ui.view">
+            <field name="name">scrum.sprint.task.card</field>
             <field name="model">scrum.sprint.task</field>
-            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="inherit_id" ref="project.view_task_card"/>
             <field name="mode">primary</field>
             <field name="priority">10</field>
             <field name="arch" type="xml">
@@ -243,30 +239,36 @@
                     <field name="user_id"/>
                 </field>
                 <!-- on click edit linked task -->
-                <kanban position="attributes">
+                <card position="attributes"> <!-- :TODO: ESTO DEBERÍA IR EN EL KANBAN, COMO ANTES -->
                     <attribute name="action">action_edit_task</attribute>
                     <attribute name="type">object</attribute>
                     <attribute name="default_group_by">user_id</attribute>
                     <attribute name="default_order">sequence, priority, id DESC</attribute>
                     <attribute name="group_create">False</attribute>
-                </kanban>
+                </card>
                 <!-- disable share action -->
-                <a name="%(portal.portal_share_action)d" position="replace"/>
-                <!-- on edit edit linked task -->
-                <a type="edit" position="attributes">
-                    <attribute name="name">action_edit_task</attribute>
-                    <attribute name="type">object</attribute>
-                </a>
+                <a name="%(project.portal_share_action)d" position="replace"/>
                 <!-- show current estimate -->
-                <div class="oe_kanban_bottom_left" position="inside">
-                    <div class="oe_kanban_bottom_left" position="inside">
-                        <div class="oe_kanban_align badge" title="Estimated hours to finalization">
-                            <a name="action_update_estimation" type="object">
-                                <field name="planned_hours_latest"/>
-                            </a>
-                        </div>
+                <xpath expr="//footer//field[@name='priority']" position="before">
+                    <div class="bg-transparent badge me-0">
+                        <a name="action_update_estimation" type="object">
+                            <field name="planned_hours_latest"/>
+                        </a>
                     </div>
-                </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="scrum_sprint_view_task_kanban">
+            <field name="name">scrum.sprint.task.kanban</field>
+            <field name="model">scrum.sprint.task</field>
+            <field name="arch" type="xml">
+                <kanban class="o_project_kanban"
+                        default_group_by="user_id"
+                        sample="1"
+                        default_order="sequence, priority, id DESC"
+                        card_id="%(project_scrum.scrum_sprint_view_task_card)d"
+                        />
             </field>
         </record>
 
@@ -274,12 +276,12 @@
             <field name="name">scrum.sprint.task.view.tree</field>
             <field name="model">scrum.sprint.task</field>
             <field name="arch" type="xml">
-                <tree string="Tasks SCRUM">
+                <list string="Tasks SCRUM">
                     <field name="sequence" widget="handle"/>  <!--:TODO: only editable by scrum master-->
                     <field name="task_id"/> <!--:TODO: only editable by scrum master-->
                     <field name="user_id" domain="[('id', 'in', parent.developer_ids)]"/>
-                    <field name="planned_hours" string="Estimation"/>
-                </tree>
+                    <field name="allocated_hours" string="Estimation"/>
+                </list>
             </field>
         </record>
 
@@ -298,7 +300,7 @@
             <field name="name">Sprints</field>
             <field name="res_model">scrum.sprint</field>
             <field name="domain">[]</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,list,form</field>
             <field name="view_id" ref="view_sprint_kanban"/>
             <field name="search_view_id" ref="view_scrum_sprint_filter"/>
             <field name="context">{'search_default_group_by_project': 1}</field>
@@ -317,7 +319,7 @@
             <field name="name">Sprints</field>
             <field name="res_model">scrum.sprint</field>
             <field name="domain">[]</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,list,form</field>
             <field name="view_id" ref="view_sprint_kanban"/>
             <field name="search_view_id" ref="view_scrum_sprint_filter"/>
             <field name="help" type="html">
@@ -334,7 +336,7 @@
             <field name="name">Sprint Tasks</field>
             <field name="res_model">scrum.sprint.task</field>
             <field name="domain">[]</field>
-            <field name="view_mode">kanban,tree</field>
+            <field name="view_mode">kanban,list</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     No tasks found.

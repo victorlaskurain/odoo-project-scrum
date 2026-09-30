@@ -12,7 +12,7 @@ class Task(models.Model):
         tracking=True,
         compute="_compute_planned_hours_latest",
         store=True,
-        readonly=False
+        readonly=False,
     )
     sprint_task_ids = fields.One2many("scrum.sprint.task", "task_id")
     sprint_ids = fields.Many2many(
@@ -35,7 +35,7 @@ class Task(models.Model):
             "type": "ir.actions.act_window",
             "name": _("Sprints"),
             "res_model": "scrum.sprint",
-            "view_mode": "kanban,tree,form",
+            "view_mode": "kanban,list,form",
             "domain": [("id", "in", sprints.ids)],
         }
         if len(sprints) == 1:
@@ -48,11 +48,11 @@ class Task(models.Model):
             )
         return action
 
-    @api.depends("planned_hours")
+    @api.depends("allocated_hours")
     def _compute_planned_hours_latest(self):
         # only used to compute the initial value whenever planned_hours is set
         for task in self.filtered(lambda t: t.planned_hours_latest == False):
-            task.planned_hours_latest = task.planned_hours
+            task.planned_hours_latest = task.allocated_hours
 
     @api.model_create_multi
     def create(self, vals_list):
